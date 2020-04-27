@@ -1,5 +1,109 @@
-<categoria></categoria>
-<seccion></seccion>
+<button (click)="CurrentView = VIEWS.Comida">Comida</button>
+<button (click)="CurrentView = VIEWS.Limpieza">Limpieza</button>
+<button (click)="CurrentView = VIEWS.Accesorios">Accesorios</button>
+<button (click)="CurrentView = VIEWS.Juguetes">Juguetes</button>
+<button (click)="CurrentView = VIEWSEC.Perros">Perros</button>
+<button (click)="CurrentView = VIEWSEC.Gatos">Gatos</button>
+<button (click)="CurrentView = VIEWSEC.Mamiferos">Mamíferos</button>
+<button (click)="CurrentView = VIEWSEC.Aves">Aves</button>
+<button (click)="CurrentView = VIEWSEC.Reptiles">Reptiles</button>
+<button (click)="CurrentView = VIEWSEC.Peces">Peces</button>
+
+<div [hidden]="CurrentView !== VIEWS.Comida">
+    <main class="container">
+    <header class="portada row margin0">
+        <div class="col-5"><img class="img-fluid" alt="comida" src="../../assets/images/food.png" alt="" class="imagen"></div>
+        <div class="col-7"><h1 class="titulo">Comida</h1></div>
+    </header>
+    <categoria></categoria>
+    </main>
+</div>
+<div [hidden]="CurrentView !== VIEWS.Limpieza">
+    <main class="container">
+    <header class="portada row margin0">
+        <div class="col-5"><img class="img-fluid" alt="limpieza" src="../../assets/images/limpieza.png" alt="" class="imagen"></div>
+        <div class="col-7"><h1 class="titulo">Limpieza</h1></div>
+    </header>
+    <categoria></categoria>
+    </main>
+</div>
+<div [hidden]="CurrentView !== VIEWS.Accesorios">
+    <main class="container">
+    <header class="portada row margin0">
+        <div class="col-5"><img class="img-fluid" alt="accesorios" src="../../assets/images/accesorios.png" alt="" class="imagen"></div>
+        <div class="col-7"><h1 class="titulo">Accesorios</h1></div>
+    </header>
+    <categoria></categoria>
+    </main>
+</div>
+<div [hidden]="CurrentView !== VIEWS.Juguetes">
+    <main class="container">
+    <header class="portada row margin0">
+        <div class="col-5"><img class="img-fluid" alt="juguetes" src="../../assets/images/juguetes.png" alt="" class="imagen"></div>
+        <div class="col-7"><h1 class="titulo">Juguetes</h1></div>
+    </header>
+    <categoria></categoria>
+    </main>
+</div>
+
+
+<div [hidden]="CurrentView !== VIEWSEC.Perros">
+    <main class="container">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="Perros" src="../../assets/images/perros.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Perros</h1></div>
+        </header>
+    <seccion></seccion>
+    </main>
+</div>
+
+<div [hidden]="CurrentView !== VIEWSEC.Gatos">
+    <main class="container">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="Gatos" src="../../assets/images/gatos.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Gatos</h1></div>
+        </header>
+    <seccion></seccion>
+    </main>
+</div>
+<div [hidden]="CurrentView !== VIEWSEC.Mamiferos">
+    <main class="container">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="mamíferos" src="../../assets/images/conejo.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Mamíferos</h1></div>
+        </header>
+    <seccion></seccion>
+    </main>
+</div>
+<div [hidden]="CurrentView !== VIEWSEC.Aves">
+    <main class="container">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="aves" src="../../assets/images/pajaros.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Aves</h1></div>
+        </header>
+    <seccion></seccion>
+    </main>
+</div>
+<div [hidden]="CurrentView !== VIEWSEC.Reptiles">
+    <main class="container">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="reptiles" src="../../assets/images/lagarto.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Reptiles</h1></div>
+        </header>
+    <seccion></seccion>
+    </main>
+</div>
+<div [hidden]="CurrentView !== VIEWSEC.Peces">
+    <main class="container">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="peces" src="../../assets/images/peces1.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Peces</h1></div>
+        </header>
+    <seccion></seccion>
+    </main>
+</div>
+
+<!-- <seccion></seccion> -->
 
 
 

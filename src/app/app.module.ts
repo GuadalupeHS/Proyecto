@@ -18,6 +18,6 @@ import { SeccionComponent } from './seccion/seccion.component';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent, CategoriaComponent, SeccionComponent]
+  bootstrap: [AppComponent] //SeccionComponent
 })
 export class AppModule { }
