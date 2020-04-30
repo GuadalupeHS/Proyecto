@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+const VIEWS = {Comida:'Comida', Limpieza: 'Limpieza', Accesorios: 'Accesorios', Juguetes: 'Juguetes'};
 
 @Component({
   selector: 'seccion',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./seccion.component.css']
 })
 export class SeccionComponent {
-  Definition:{
-      
-  };
+  CurrentView;
+  VIEWS=VIEWS;
+
 }

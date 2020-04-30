@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-//const VIEWS = {Comida:'Comida', Limpieza: 'Limpieza', Accesorios: 'Accesorios', Juguetes: 'Juguetes'};
+const VIEWSEC= {Perros: 'Perros', Gatos:'Gatos', Mamiferos:'Mamiferos', Aves:'Aves', Reptiles:'Reptiles', Peces:'Peces'};
+
 @Component({
   selector: 'categoria',
   templateUrl: './categoria.component.html',
   styleUrls: ['./categoria.component.css']
 })
 export class CategoriaComponent {
-  // CurrentView;
-  // VIEWS=VIEWS;
+  CurrentView;
+  VIEWSEC = VIEWSEC;
 }

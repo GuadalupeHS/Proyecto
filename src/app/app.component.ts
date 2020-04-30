@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-const VIEWS = {Comida:'Comida', Limpieza: 'Limpieza', Accesorios: 'Accesorios', Juguetes: 'Juguetes'};
-const VIEWSEC= {Perros: 'Perros', Gatos:'Gatos', Mamiferos:'Mamiferos', Aves:'Aves', Reptiles:'Reptiles', Peces:'Peces'};
+// const VIEWS = {Comida:'Comida', Limpieza: 'Limpieza', Accesorios: 'Accesorios', Juguetes: 'Juguetes'};
+// const VIEWSEC= {Perros: 'Perros', Gatos:'Gatos', Mamiferos:'Mamiferos', Aves:'Aves', Reptiles:'Reptiles', Peces:'Peces'};
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +8,7 @@ const VIEWSEC= {Perros: 'Perros', Gatos:'Gatos', Mamiferos:'Mamiferos', Aves:'Av
 })
 export class AppComponent {
   title = 'CProyecto';
-  CurrentView;
-  VIEWS=VIEWS;
-  VIEWSEC = VIEWSEC;
+  // CurrentView;
+  // VIEWS=VIEWS;
+  // VIEWSEC = VIEWSEC;
 }

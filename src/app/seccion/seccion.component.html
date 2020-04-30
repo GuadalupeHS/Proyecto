@@ -1,58 +1,105 @@
-<!-- <main class="container"> -->
+<main class="container">
     <!-- <header class="portada row margin0">
         <div class="col-5"><img class="img-fluid" alt="Perros" src="../../assets/images/perros.png" alt="" class="imagen"></div>
         <div class="col-7"><h1 class="titulo">Perros</h1></div>
     </header>  -->
 
-    <section class="row margin0 height-auto padding10"> 
 
-                <aside class="col-lg-2 lado content borde-negro">
-                        <div class="row">
-                            <div class="col-12 tam">Productos más vendidos</div>
-                        </div>
-                        <div class="row">
-                            <div class="contenedor">
-                                <ul>
-                                <li><img src="../../assets/images/comidaperro.png" alt=""></li>
-                                <li><img src="../../assets/images/casa.png" alt=""></li>
-                                <li><img src="../../assets/images/comidagato.png" alt=""></li>
-                                <li><img src="../../assets/images/pecera.png" alt=""></li>
-                                </ul>
-                            </div>
-                        </div>
-                </aside>
+    <button (click)="CurrentView = VIEWS.Comida">Comida</button>
+    <button (click)="CurrentView = VIEWS.Limpieza">Limpieza</button>
+    <button (click)="CurrentView = VIEWS.Accesorios">Accesorios</button>
+    <button (click)="CurrentView = VIEWS.Juguetes">Juguetes</button>
 
-                <section class="borde-negro col-lg-10 areacat padding0 px-2">
-                        <div class="row mar">
-                            <div class="col-12 titulo2">Categoria</div>
-                        </div>
-                        <div class="row mar height-auto">
-                            <div class="col-6 col-md-4 col-lg-3 catesize">
-                                <div class="div-img row margin0 padding0" >
-                                  <img class="img col-12" src="../../assets/images/baño.png" >
-                                  <div class="text col-12">Limpieza</div>
-                                </div>
-                            </div>
-        
-                            <div class="col-6 col-md-4 col-lg-3 catesize">
-                                <div class="div-img row margin0 padding0" >
-                                  <img class="img col-12" src="../../assets/images/food1.png" >
-                                  <div class="text col-12">Comida</div>
-                                </div>
-                            </div> 
-                            <div class="col-6 col-md-4 col-lg-3 catesize">
-                                <div class="div-img row margin0 padding0" >
-                                  <img class="img col-12 margin0 padding0" src="../../assets/images/juguetes.png" >
-                                  <div class="text col-12">Juguetes</div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 col-lg-3 catesize">
-                                <div class="div-img row margin0 padding0" >
-                                    <img class="img col-12 margin0 padding0" src="../../assets/images/accesorios.png" >
-                                    <div class="text col-12">Accesorios</div>
-                                </div>
-                            </div>
-                    </div>
-                </section>
+    <div [hidden]="CurrentView !== VIEWS.Comida">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="comida" src="../../assets/images/food.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Comida</h1></div>
+        </header>
+    </div>
+    <div [hidden]="CurrentView !== VIEWS.Limpieza">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="limpieza" src="../../assets/images/limpieza.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Limpieza</h1></div>
+        </header>
+    </div>
+    <div [hidden]="CurrentView !== VIEWS.Accesorios">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="accesorios" src="../../assets/images/accesorios.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Accesorios</h1></div>
+        </header>
+    </div>
+    <div [hidden]="CurrentView !== VIEWS.Juguetes">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="juguetes" src="../../assets/images/juguetes.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Juguetes</h1></div>
+        </header>
+    </div>
+<section class="row margin0 height-auto padding10"> 
+
+    <aside class="col-lg-2 lado content borde-negro">
+            <div class="row">
+                <div class="col-12 tam">Productos más vendidos</div>
+            </div>
+            <div class="row">
+                <div class="contenedor">
+                    <ul>
+                    <li><img src="../../assets/images/comidaperro.png" alt=""></li>
+                    <li><img src="../../assets/images/casa.png" alt=""></li>
+                    <li><img src="../../assets/images/comidagato.png" alt=""></li>
+                    <li><img src="../../assets/images/pecera.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+    </aside>
+    <section class="borde-negro col-lg-10 areacat padding0 px-2">
+        <div class="row mar">
+            <div class="col-12 titulo2">Mascotas</div>
+        </div>
+        <div class="row mar height-auto">
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class=" petsize" src="../../assets/images/dog.png" >
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="petboton petsnames"><a href="#">Perros</a></div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class=" petsize" src="../../assets/images/cat.png" >
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="petboton petsnames"><a href="#">Gatos</a></div>
+            </div>
+        </div>
+        <div class="row mar height-auto">
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class=" petsize" src="../../assets/images/hamster.png" >
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="petboton petsnames"><a href="#">Mamíferos</a></div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class=" petsize" src="../../assets/images/pajaro.png" >
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="petboton petsnames"><a href="#">Aves</a></div>
+            </div>
+        </div>
+        <div class="row mar height-auto">
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class=" petsize" src="../../assets/images/lagarto.png" >
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="petboton petsnames"><a href="#">Reptiles</a></div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class=" petsize" src="../../assets/images/peces.png" >
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="petboton petsnames"><a href="#">Peces</a></div>
+            </div>
+        </div>
+
+
     </section>
-<!-- </main> -->
+</section>
+    
+</main>
