@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
-const VIEWS = {Comida:'Comida', Limpieza: 'Limpieza', Accesorios: 'Accesorios', Juguetes: 'Juguetes'};
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'seccion',
   templateUrl: './seccion.component.html',
   styleUrls: ['./seccion.component.css']
 })
-export class SeccionComponent {
-  CurrentView;
-  VIEWS=VIEWS;
+
+export class SeccionComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }

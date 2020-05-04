@@ -1,0 +1,47 @@
+
+
+     <nav class="sections">
+      <ul class="nav nav-fill">
+          <li class="nav-item">
+            <a (click)="CurrentView = VIEWS.Comida" routerLink="/seccion" class="nav-link text-dark"> <img src="../../assets/sections/food.png" width="20px" height="20px"> FOOD  </a>
+          </li>
+          <li class="nav-item">
+            <a (click)="CurrentView = VIEWS.Limpieza" routerLink="/seccion" class="nav-link text-dark" > <img src="../../assets/sections/cleaning.png" width="20px" height="20px"> CLEANING </a>
+          </li>
+          <li class="nav-item">
+            <a (click)="CurrentView = VIEWS.Juguetes" routerLink="/seccion" class="nav-link text-dark" href="#"> <img src="../../assets/images/juguetes.png" width="20px" height="20px"> TOYS </a>
+          </li>
+          <li class="nav-item">
+            <a (click)="CurrentView = VIEWS.Accesorios" routerLink="/seccion" class="nav-link text-dark" href="#"> <img src="../../assets/sections/accesories.png" width="20px" height="20px"> ACCESORIES </a>
+          </li>
+          <li class="nav-item">
+            <a (click)="CurrentView = VIEWS.Productos" routerLink="/catalogo"  class="nav-link text-dark"> <img src="../../assets/sections/accesories.png" width="20px" height="20px"> PRODUCTS </a>
+          </li>
+        </ul>
+       </nav>
+       <main class="container">
+       <div [hidden]="CurrentView !== VIEWS.Comida">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="comida" src="../../assets/images/food.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Comida</h1></div>
+        </header>
+    </div>
+    <div [hidden]="CurrentView !== VIEWS.Limpieza">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="limpieza" src="../../assets/images/limpieza.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Limpieza</h1></div>
+        </header>
+    </div>
+    <div [hidden]="CurrentView !== VIEWS.Accesorios">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="accesorios" src="../../assets/images/accesorios.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Accesorios</h1></div>
+        </header>
+    </div>
+    <div [hidden]="CurrentView !== VIEWS.Juguetes">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="juguetes" src="../../assets/images/juguetes.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Juguetes</h1></div>
+        </header>
+    </div>
+  </main>
