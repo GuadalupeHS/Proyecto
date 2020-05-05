@@ -13,7 +13,9 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
-  
+  busqueda = {
+    nombre: ''
+  };
   ngOnInit(): void {
   }
 
