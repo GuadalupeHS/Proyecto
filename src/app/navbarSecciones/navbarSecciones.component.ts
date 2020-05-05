@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-const VIEWS = {Comida:'Comida', Limpieza: 'Limpieza', Accesorios: 'Accesorios', Juguetes: 'Juguetes',Productos:'Productos'};
-// const VIEWSEC= {Perros: 'Perros', Gatos:'Gatos', Mamiferos:'Mamiferos', Aves:'Aves', Reptiles:'Reptiles', Peces:'Peces'};
+const Secciones = {Comida:'Comida', Limpieza: 'Limpieza', Accesorios: 'Accesorios', Juguetes: 'Juguetes',Productos:'Productos'};
 
 @Component({
   selector: 'app-secciones',
@@ -11,12 +10,11 @@ const VIEWS = {Comida:'Comida', Limpieza: 'Limpieza', Accesorios: 'Accesorios', 
 
 
 export class NavbarSeccionesComponent implements OnInit {
-
+  CurrentView;
+  SEC = Secciones;
   constructor() { }
   ngOnInit(): void {
   }
-  CurrentView;
-  VIEWS=VIEWS;
-  // VIEWSEC = VIEWSEC;
-
+ 
+  
 }
