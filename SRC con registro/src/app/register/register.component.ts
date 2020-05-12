@@ -3,17 +3,31 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 const ACT= {Registro:'Registro'};
 declare var $: any;
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
+  
 })
+
 export class RegisterComponent implements OnInit {
  
   
   registro;
-  cuenta:[];
-  
+ 
+
+  constructor(private route: ActivatedRoute, private router: Router) { 
+    
+    router.events.subscribe((val) => {
+      this.registro = this.route.snapshot.queryParams["registro"];});
+      
+  }
+  ACT = ACT;
+  ngOnInit(): void {
+  }
+
+
   user={
     usuario:'',
     email:'',
@@ -22,46 +36,40 @@ export class RegisterComponent implements OnInit {
     apellidoMaterno:'',
     password:''
   }
+  cuentas = [];
+  isLoadingRegisters = true;
 
-  constructor(private route: ActivatedRoute, private router: Router) { 
+  PostRegister = function () {
+
+    var datos= this.user.email +' '+ this.user.nombre + ' '+ this.user.apellidoPaterno + ' '+ this.user.apellidoMaterno + ' ' + this.user.password;
+
+    var params = '';
+    params += 'usuario=' + this.user.usuario+ '&';
+    params += 'nombre=' + this.user.nombre + '&';
+    params += 'apellidoParerno=' + this.user.apellidoPaterno + '&';
+    params += 'apellidoMaterno=' + this.user.apellidoMaterno+ '&';
+    params += 'email=' + this.user.email + '&';
+    params += 'password=' + this.user.password;
+
+    var numParams = 0;
+    var self = this;
     
-    router.events.subscribe((val) => {
-      this.registro = this.route.snapshot.queryParams["registro"];});
-    
+    console.log(datos);
+
+    $.ajax({
+      method: 'post',
+      url: 'http://localhost:777/cuenta/new?'+params,
+      success: function (result) {
+       
+        self.cuentas = result ;
+        self.isLoadingRegisters = false;
+      },
+      error: function (){
+        self.cuentas = [];
+        self.isLoadingRegisters = false;
+      }
+    });
   }
-  ACT = ACT;
-  ngOnInit(): void {
-  }
-//    comprobarClave(){
-//     clave1 = document.f1.clave1.value
-//     clave2 = document.f1.clave2.value
-
-//     if (clave1 == clave2)
-//        alert("Las dos claves son iguales...\nRealizaríamos las acciones del caso positivo")
-//     else
-//        alert("Las dos claves son distintas...\nRealizaríamos las acciones del caso negativo")
-// }
-
- 
-
-
-  // PostCuenta = function (){
-  //   var self = this;
-
-  //   $.ajax({
-  //     method: 'post',
-  //     url: 'http://localhost:777/cuenta/usuario',
-  //     success: function (result){
-  //       self.user = result;
-  //     },
-  //     error: function (){
-  //       self.user = [];
-  //     }
-      
-      
-  //   });
-    
-  // }
 
     
 }
