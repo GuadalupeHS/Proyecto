@@ -1,14 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" routerLink="/admin" h1>
       <img src="../../assets/navbar/logo.png" width="50px" height="50px" alt=""> WONDER PET</a>
-      <div class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" (input)="busqueda.nombre = $event.target.value">
-        <button class="btn btn-outline-success my-2 my-sm-0" routerLink= "/catalogo" [queryParams]=busqueda>Search</button>
-      </div>
+     
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+	<!-- SEARCH-->
+	<div class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" (input)="busqueda.nombre = $event.target.value">
+        <button class="btn btn-outline-success my-2 my-sm-0" routerLink= "/catalogo" [queryParams]=busqueda>Search</button>
+     	 </div>
+	<!-- FIN -->
       <ul class="navbar-nav ml-md-auto">
         <li class="nav-item">
           <a href="" class="nav-link" routerLink="/main"> HOME </a>
