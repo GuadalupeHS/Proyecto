@@ -2,6 +2,19 @@
        
     <section class="row margin0 height-auto padding10"> 
 
+    <div class="width100">
+      <div class="btn-group floatRight">
+        <button type="button" class="btn btn-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="material-icons mdc-icon-button__icon">sort</i> {{textoOrden}} 
+        </button>
+        <div class="dropdown-menu">
+          <button class="dropdown-item" type="button" (click) = "filtros.orden = null; cambiarRuta(); textoOrden='Nombre ascendente'">Nombre ascendente</button>
+          <button class="dropdown-item" type="button" (click) = "filtros.orden = 'nd'; cambiarRuta(); textoOrden='Nombre descendente'">Nombre descendente</button>
+          <button class="dropdown-item" type="button" (click) = "filtros.orden = 'pa'; cambiarRuta(); textoOrden='Precio ascendente'">Precio ascendente</button>
+          <button class="dropdown-item" type="button" (click) = "filtros.orden = 'pd'; cambiarRuta(); textoOrden='Precio descendente'">Precio descendente</button>
+        </div>
+      </div>
+    </div>
       <aside class="col-lg-2 lado content height-content borde-negro rounded marginT1rem">
                         <div class="row">
                             <div class="col-12 tam">Filtros</div>
@@ -189,93 +202,30 @@
                               <div class="card-header" id="headingThree">
                                 <h5 class="mb-0">
                                   <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Precio
+                                    Precios
                                   </button>
                                 </h5>
                               </div>
                               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                 <div class="card-body">
 
-                                    <div class="mdc-form-field">
-                                        <div class="mdc-checkbox">
-                                          <input type="checkbox"
-                                                 class="mdc-checkbox__native-control"
-                                                 id="checkbox-min"
-                                                 (change) = "cambiar('minimo');"/>
-                                          <div class="mdc-checkbox__background">
-                                            <svg class="mdc-checkbox__checkmark"
-                                                 viewBox="0 0 24 24">
-                                              <path class="mdc-checkbox__checkmark-path"
-                                                    fill="none"
-                                                    d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                                            </svg>
-                                            <div class="mdc-checkbox__mixedmark"></div>
-                                          </div>
-                                          <div class="mdc-checkbox__ripple"></div>
-                                        </div>
-                                        <label for="checkbox-1">Minimo:</label>
-                                    </div>
-
-                                    <div id="minimo" class=" p-2 dropdown inline-block">
-                                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMinimo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span *ngIf="filtros.pMin == undefined; else minimos">
-                                          Minimo
-                                        </span>
-                                        <ng-template #minimos>
-                                          ${{filtros.pMin}}
-                                        </ng-template>
-                                      </button>
-                                      <div class="dropdown-menu" aria-labelledby="dropdownMinimo">
-                                        <button class="dropdown-item" type="button" (click) = "filtros.pMin = undefined; minimo ? cambiarRuta(): null">Todo</button>
-                                        <button class="dropdown-item" type="button" (click) = "filtros.pMin = '200'; minimo ? cambiarRuta(): null">$200</button>
-                                        <button class="dropdown-item" type="button" (click) = "filtros.pMin = '500'; minimo ? cambiarRuta(): null">$500</button>
-                                        <button class="dropdown-item" type="button" (click) = "filtros.pMin = '1000'; minimo ? cambiarRuta(): null">$1000</button>
-                                      </div>
-                                    </div>
-
-                                    <div class="mdc-form-field">
-                                        <div class="mdc-checkbox">
-                                          <input type="checkbox"
-                                                 class="mdc-checkbox__native-control"
-                                                 id="checkbox-0a100"
-                                                 (change) = "cambiar('maximo');"/>
-                                          <div class="mdc-checkbox__background">
-                                            <svg class="mdc-checkbox__checkmark"
-                                                 viewBox="0 0 24 24">
-                                              <path class="mdc-checkbox__checkmark-path"
-                                                    fill="none"
-                                                    d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                                            </svg>
-                                            <div class="mdc-checkbox__mixedmark"></div>
-                                          </div>
-                                          <div class="mdc-checkbox__ripple"></div>
-                                        </div>
-                                        <label for="checkbox-1">Máximo:</label>
-                                    </div>
-
                                     <div id="maximo" class=" p-2 dropdown inline-block">
-                                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMaximo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span *ngIf="filtros.pMax == undefined; else maximos">
-                                          Maximo
-                                        </span>
-                                        <ng-template #maximos>
-                                          ${{filtros.pMax}}
-                                        </ng-template>
+                                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMaximo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">       
+                                          {{textoPrecios}}
                                       </button>
                                       <div class="dropdown-menu" aria-labelledby="dropdownMaximo">
-                                        <button class="dropdown-item" type="button" (click) = "filtros.pMax = '200'; maximo ? cambiarRuta(): null">$200</button>
-                                        <button class="dropdown-item" type="button" (click) = "filtros.pMax = '500'; maximo ? cambiarRuta(): null">$500</button>
-                                        <button class="dropdown-item" type="button" (click) = "filtros.pMax = '1000'; maximo ? cambiarRuta(): null">$1000</button>
-                                        <button class="dropdown-item" type="button" (click) = "filtros.pMax = undefined; maximo ? cambiarRuta(): null">Todo</button>
+                                        <button class="dropdown-item" type="button" (click) = "filtros.precios = undefined; cambiarRuta(); textoPrecios='Todo'">Todo</button>
+                                        <button class="dropdown-item" type="button" (click) = "filtros.precios = '1'; cambiarRuta(); textoPrecios='$1-$199'">$1-$199</button>
+                                        <button class="dropdown-item" type="button" (click) = "filtros.precios = '200'; cambiarRuta(); textoPrecios='$200-$499'">$200-$499</button>
+                                        <button class="dropdown-item" type="button" (click) = "filtros.precios = '500'; cambiarRuta(); textoPrecios='$500-$999'">$500-$999</button>
+                                        <button class="dropdown-item" type="button" (click) = "filtros.precios = '1000'; cambiarRuta(); textoPrecios='$1000+'">$1000+</button>
                                       </div>
                                     </div>
                                     
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        
-                                     
+                          </div>                            
       </aside>
 
       <main class="col-lg-10 padding1rem">
@@ -283,13 +233,13 @@
         <div *ngFor="let producto of productos;">
           <div class="mdc-card tarjeta float">
             <div class="mdc-card__primary-action" tabindex="0">
-              <div class="mdc-card__media mdc-card__media--square" style="background-image: url(&quot;https://maskota.com.mx/media/catalog/product/p/e/petsy-peba656a-aaaaaa-1.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=700&width=700&quot;);"></div>
-              <div>
+            <div class="mdc-card__media mdc-card__media--square" style="background-image: url({{producto.imagenLink}});"></div>
+              <div class="pieDeTarjeta">
                 <h1 class="producto-nombre">{{producto.nombre}}</h1>
                 <div class="mdc-typography mdc-typography--body2 center price">${{producto.precio}}</div>
               </div>
             </div>
-            <p class="mdc-typography mdc-typography--subtitle2 texto">{{producto.descripcion}}</p>
+            <div class="mdc-typography mdc-typography--subtitle2 texto">{{producto.descripcion}}</div>
             <div class="area-boton">
               <button class="mdc-button mdc-button--raised rojo flex-center">               
                 <i class="material-icons mdc-icon-button__icon">add_shopping_cart</i>
@@ -301,6 +251,5 @@
       </main>
 
     </section>
-
-
+    
 </main>

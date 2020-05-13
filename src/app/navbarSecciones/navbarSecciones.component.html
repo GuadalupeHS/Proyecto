@@ -3,10 +3,10 @@
      <nav class="sections">
       <ul class="nav nav-fill">
           <li class="nav-item">
-            <a routerLink="/seccion" [queryParams]="{seccion: 'Comida'}"  class="nav-link text-dark"> <img src="../../assets/sections/food.png" width="20px" height="20px"> FOOD  </a>
+            <a routerLink="/seccion" [queryParams]="{seccion: 'Comida'}" (click)="{seccion: 'Comida'}" class="nav-link text-dark"> <img src="../../assets/sections/food.png" width="20px" height="20px"> FOOD  </a>
           </li>
           <li class="nav-item">
-            <a routerLink="/seccion" [queryParams]="{seccion: 'Limpieza'}"  class="nav-link text-dark" > <img src="../../assets/sections/cleaning.png" width="20px" height="20px"> CLEANING </a>
+            <a routerLink="/seccion" [queryParams]="{seccion: 'Limpieza'}" (click)="{seccion: 'Limpieza'}" class="nav-link text-dark" > <img src="../../assets/sections/cleaning.png" width="20px" height="20px"> CLEANING </a>
           </li>
           <li class="nav-item">
             <a routerLink="/seccion" [queryParams]="{seccion: 'Juguetes'}" class="nav-link text-dark" href="#"> <img src="../../assets/images/juguetes.png" width="20px" height="20px"> TOYS </a>

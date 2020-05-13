@@ -47,6 +47,35 @@ router.get('/search',async (req, res) =>{
     res.end();
 });
 
+router.post('/new',async (req, res) =>{
+
+    var params = req.query;
+    var filter = {};
+    filter.usuario = params.usuario;
+    var encontrados = await Cuentas.findOne(filter);
+    if( encontrados)
+    {
+        res.send( {error:'Esta cuenta ya existe con el usuario: ' + params.usuario + ' Esta dado de alta a nombre: ' + encontrados.nombre});
+        return;
+    } 
+
+    if(!params.usuario && !params.nombre && !params.apellidoPaterno && !params.apellidoMaterno && !params.email)
+    {
+        res.send("Debes cumplir con las características minimas de una cuenta");
+        return;
+    }
+    
+    var insertado = await Cuentas.create(params);
+    if( insertado)
+    {
+        res.send("se inserto correctamente ")
+    }
+    else
+    {
+        res.send("Error");
+    }
+    res.end();
+});
 
 router.get('/:usuario', async (req, res)=>{
     var required = req.params;
@@ -68,6 +97,7 @@ router.post('/:usuario', async (req, res)=>{
         return;
     } 
     var cuenta = req.body;
+    console.log(req);
     cuenta.usuario = filter.usuario;
     if(!cuenta.usuario && !cuenta.nombre && !cuenta.apellidoPaterno && !cuenta.apellidoMaterno)
     {
@@ -84,54 +114,6 @@ router.post('/:usuario', async (req, res)=>{
         res.send("Error");
     }
     res.end();
-});
-
-router.put('/:usuario', async (req, res)=>{
-    var required = req.params;
-    var filter = {};
-    filter.usuario =required.usuario;
-    var encontrados = await Cuentas.findOne(filter);
-    if( !encontrados)
-    {
-        res.send( {error:'Esta cuenta no existe'});
-        return;
-    }
-    var cuenta = req.body;
-    cuenta.usuario = filter.usuario;
-    var insertado = await Cuentas.updateOne(filter, {$set: cuenta});
-    if( insertado)
-    {
-        res.send("Se actualizo correctamente ")
-    }
-    else
-    {
-        res.send("Error")
-    }
-    res.end();
-
-});
-router.delete('/:usuario', async (req, res)=>{
-    var required = req.params;
-    var filter = {};
-    filter.usuario =required.usuario;
-    var encontrados = await Cuentas.findOne(filter);
-    if( !encontrados)
-    {
-        res.send( {error:"Esta cuenta no existe"});
-        return;
-    } 
-    
-    var insertado = await Cuentas.deleteOne(filter);
-    if( insertado)
-    {
-        res.send("Se elimino correctamente ")
-    }
-    else
-    {
-        res.send("Error")
-    }
-    res.end();
-
 });
 
 

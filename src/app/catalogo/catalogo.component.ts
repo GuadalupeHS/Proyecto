@@ -12,14 +12,13 @@ export class CatalogoComponent {
 
   productos = [];
   nombre;
-  minimo = false;
-  maximo = false;
+  textoPrecios = 'Todo';
+  textoOrden = 'Ordenar por...';
   filtros = {
     nombre: '',
     departamento: '',
     mascota: '',
-    pMin: '',
-    pMax: '',
+    precios: '',
     orden: ''
   }
 
@@ -29,15 +28,12 @@ export class CatalogoComponent {
       this.filtros.nombre = this.route.snapshot.queryParams["nombre"];
       this.filtros.departamento = this.route.snapshot.queryParams["departamento"];
       this.filtros.mascota = this.route.snapshot.queryParams["mascota"];
-      this.filtros.pMin = this.route.snapshot.queryParams["pMin"];
-      this.filtros.pMax = this.route.snapshot.queryParams["pMax"];
+      this.filtros.precios = this.route.snapshot.queryParams["precios"]
       this.filtros.orden = this.route.snapshot.queryParams["orden"];
 
-      if(this.filtros.nombre || this.filtros.departamento || this.filtros.mascota){
-        console.log("Es verdad");
+      if(this.filtros.nombre || this.filtros.departamento || this.filtros.mascota || this.filtros.precios){
         this.SearchProductoFiltros();
       }else{
-        console.log("Es falso");
         this.SearchProductos();
       }
       console.log(this.filtros);
@@ -88,21 +84,22 @@ export class CatalogoComponent {
         texto += "&"
       }
       texto +=  ("mascota="+ this.filtros.mascota);
+      masParams=true;
     }
-    if(this.filtros.pMin){
+    if(this.filtros.precios){
       if(masParams){
         texto += "&"
       }
-      texto +=  ("pMin="+ this.filtros.pMin);
+      texto +=  ("precios="+ this.filtros.precios);
+      masParams=true;
     }
-    if(this.filtros.pMax){
+    if(this.filtros.orden){
       if(masParams){
         texto += "&"
       }
-      texto +=  ("pMax="+ this.filtros.pMax);
+      texto +=  ("orden="+ this.filtros.orden);
     }
-    console.log(texto);
-
+    
     $.ajax({
       method: 'get',
       url: 'http://localhost:777/producto/search?'+texto,
@@ -119,10 +116,14 @@ export class CatalogoComponent {
 
   SearchProductos = function () {
     var self = this;
+    var url = 'http://localhost:777/producto/all';
 
+    if(this.filtros.orden){
+      url +=  ("?orden="+ this.filtros.orden);
+    }
     $.ajax({
       method: 'get',
-      url: 'http://localhost:777/producto/all',
+      url: url,
       success: function (result){
         self.productos = result;
       },
