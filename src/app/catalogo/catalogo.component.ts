@@ -43,6 +43,16 @@ export class CatalogoComponent {
   cambiarRuta = function(){
     this.router.navigate(['/catalogo'], {queryParams: this.filtros});
   }
+
+  getId = function(index){
+    console.log("#producto"+index);
+    return ("#producto"+index);
+  }
+
+  setId = function(index){
+    console.log("producto"+index);
+    return ("producto"+index);
+  }
   
   desactivar = function(desactivar){
     if (desactivar == 'minimo'){
