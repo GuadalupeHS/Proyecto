@@ -17,9 +17,9 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent},
   { path: 'main', component: MainComponent},
   { path: 'secciones', component: SeccionComponent},
-  { path: '', redirectTo:'/MainComponent', pathMatch: 'full'},
-  { path: '**', component: MainComponent},
-  { path: 'LoginComponent', component: LoginComponent},
+  { path: 'login', component: LoginComponent},
+  { path: '', redirectTo:'/main', pathMatch: 'full'},
+  { path: '**', component: MainComponent}
 
 
 
