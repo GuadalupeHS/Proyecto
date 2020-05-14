@@ -27,7 +27,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  cuentaExistente = false;
+  datosIncompletos = false;
+  aceptarTyC = false;
+  errorTyC= false;
   user={
     usuario:'',
     email:'',
@@ -41,7 +44,19 @@ export class RegisterComponent implements OnInit {
 
   PostRegister = function () {
 
+    if(!this.aceptarTyC){
+      this.errorTyC = true;
+      return(this.errorTyC);
+    }
+    this.errorTyC = false;
+    
     var datos= this.user.email +' '+ this.user.nombre + ' '+ this.user.apellidoPaterno + ' '+ this.user.apellidoMaterno + ' ' + this.user.password;
+
+    if(!this.user.email || !this.user.nombre || !this.user.apellidoPaterno || !this.user.apellidoMaterno || !this.user.password ){
+      this.datosIncompletos = true;
+      return(this.datosIncompletos);
+    }
+    this.datosIncompletos = false;
 
     var params = '';
     params += 'usuario=' + this.user.usuario+ '&';
@@ -54,17 +69,25 @@ export class RegisterComponent implements OnInit {
     var numParams = 0;
     var self = this;
     
-    console.log(datos);
+    //console.log(datos);
 
     $.ajax({
       method: 'post',
       url: 'http://localhost:777/cuenta/new?'+params,
       success: function (result) {
        
-        self.cuentas = result ;
         self.isLoadingRegisters = false;
+
+        if(result.error){
+          self.cuentaExistente = true;
+          console.log(self.cuentaExistente);
+          return(self.cuentaExistente);
+        }
+        self.cuentas = result ;
+        
       },
       error: function (){
+        console.log("Error :0")
         self.cuentas = [];
         self.isLoadingRegisters = false;
       }
