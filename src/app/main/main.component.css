@@ -5,6 +5,14 @@
     height: auto;
     overflow: hidden !important;
 }
+.carousel-caption{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    color: black;
+    bottom: 8rem;
+    left: 50rem;
+}
 
 .headerPets{
     margin-top: 1rem;
