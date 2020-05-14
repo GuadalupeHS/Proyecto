@@ -12,7 +12,7 @@ html, body{
 .container{
     width: auto;
     height: auto;
-    margin-top: 10rem;
+    margin-top: 5rem;
 }
 form{
     margin-left: 5rem;
@@ -23,4 +23,15 @@ form{
     width: 20rem;
     height: 3rem;
     border-radius: 0.5em;
+}
+.margin-top{
+    margin-top: 1rem;
+}
+p{
+    color: blue;
+    text-decoration: underline;
+}
+p:hover{
+    cursor: default;
+    
 }
