@@ -5,6 +5,15 @@
     height: auto;
     overflow: hidden !important;
 }
+.carousel-caption{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    color: black;
+    bottom: 2rem;
+    left: 70vw;
+    width: auto;
+}
 
 .headerPets{
     margin-top: 1rem;

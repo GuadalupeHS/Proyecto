@@ -255,7 +255,7 @@ margin-top: 30px;
 .producto-nombre{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: medium;
-    margin: 1rem;
+    margin: 0.5rem;
 }
 
 .center{
@@ -277,7 +277,7 @@ margin-top: 30px;
 .pieDeTarjeta{
     height: fit-content;
     overflow: auto;
-    height: 21rem;
+    height: 15rem;
 }
 
 .area-boton{
