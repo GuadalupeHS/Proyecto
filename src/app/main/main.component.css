@@ -8,10 +8,11 @@
 .carousel-caption{
     margin: 0;
     padding: 0;
-    position: absolute;
+    display: flex;
     color: black;
-    bottom: 8rem;
-    left: 50rem;
+    bottom: 2rem;
+    left: 70vw;
+    width: auto;
 }
 
 .headerPets{

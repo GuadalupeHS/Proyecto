@@ -17,6 +17,8 @@ import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { SuccessComponent } from './success/sucess.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { LoginComponent } from './login/login.component';
     CategoriasComponent,
     MainComponent,
     LoginComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

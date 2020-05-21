@@ -235,11 +235,12 @@
             <div class="mdc-card__primary-action" tabindex="0" data-toggle="modal" [attr.data-target]="'#prueba'+producto.id">
             <div class="mdc-card__media mdc-card__media--square" style="background-image: url({{producto.imagenLink}});"></div>
               <div class="pieDeTarjeta">
-                <h1 class="producto-nombre">{{producto.nombre}}</h1>
+                <h1 class="producto-nombre overflow-hidden">{{producto.nombre}}</h1>
                 <div class="mdc-typography mdc-typography--body2 center price">${{producto.precio}}</div>
               </div>
+              <div class="mdc-typography mdc-typography--subtitle2 overflow-hidden texto">{{producto.descripcion}}</div>
             </div>
-            <div class="mdc-typography mdc-typography--subtitle2 texto">{{producto.descripcion}}</div>
+            
             <div class="area-boton">
               <button class="mdc-button mdc-button--raised rojo flex-center">               
                 <i class="material-icons mdc-icon-button__icon">add_shopping_cart</i>

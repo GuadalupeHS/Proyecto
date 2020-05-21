@@ -84,6 +84,7 @@ export class RegisterComponent implements OnInit {
           return(self.cuentaExistente);
         }
         self.cuentas = result ;
+        self.router.navigate(['/register/success']);
         
       },
       error: function (){
