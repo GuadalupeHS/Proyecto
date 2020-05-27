@@ -103,4 +103,29 @@ app.use( '/cart/add', (req, res )=>{
     res.send( Carts[cartID] );
 });
 
+app.use( '/cart/delete', (req, res )=>{
+    var cartID = '';
+    var parameters = req.query;
+    //Si no existe la sesión del carrito, generar uno nuevo
+    if( !req.cookies['cartID'] )
+    {
+        var randomSeed = new Date();
+        cartID = randomSeed.getDay() + '-' + randomSeed.getUTCMilliseconds();
+        res.cookie( 'cartID', cartID , { maxAge: 99999999, httpOnly: false });
+        Carts[cartID] = { products: [], price: 0 };
+    }
+    //Si ya existe, buscar el carrito de esa sesión
+    else
+    {
+        cartID = req.cookies['cartID'] + '';
+
+        var index = parseInt(parameters.index);
+        Carts[cartID].products.splice(index, index); 
+
+    }
+
+    //Enviar el carrito en el estado en el que se quedó la última vez (O nuevo, en su caso)
+    res.send( Carts[cartID] );
+});
+
 app.listen(777);
