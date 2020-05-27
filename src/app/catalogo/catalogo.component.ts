@@ -9,7 +9,7 @@ declare var $: any;
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent {
-
+  Cart = {};
   productos = [];
   nombre;
   textoPrecios = 'Todo';
@@ -143,4 +143,34 @@ export class CatalogoComponent {
     });
     console.log(self.productos)
   }
+
+  GetCookies = function()
+  {
+    var cookies = document.cookie.split(';');
+    var array = {};
+    for( var i = 0; i < cookies.length; i++ )
+    {
+      var cookie = cookies[i].split('=');
+      array[cookie[0]] = cookie[1];
+    }
+    return array;
+  }
+
+  AgregarAlCarrito = function (id){
+    var cookies = this.GetCookies();
+    var self = this;
+    console.log(id);
+
+    $.get({
+      url: 'http://localhost:777/cart/add?id='+id,
+      xhrFields: {
+        withCredentials: true
+      },
+      success: function (res) {
+        self.Cart = res;
+        console.log(res);
+      }
+    });
+  }
 }
+

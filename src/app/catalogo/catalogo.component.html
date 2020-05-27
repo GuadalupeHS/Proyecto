@@ -15,7 +15,8 @@
         </div>
       </div>
     </div>
-      <aside class="col-lg-2 lado content height-content borde-negro rounded marginT1rem">
+
+    <aside class="col-lg-2 lado content height-content borde-negro rounded marginT1rem">
                         <div class="row">
                             <div class="col-12 tam">Filtros</div>
                         </div>
@@ -226,9 +227,9 @@
                               </div>
                             </div>
                           </div>                            
-      </aside>
+    </aside>
 
-      <main class="col-lg-10 padding1rem">
+    <main class="col-lg-10 padding1rem">
            
         <div *ngFor="let producto of productos;">
           <div class="mdc-card tarjeta float">
@@ -242,7 +243,7 @@
             </div>
             
             <div class="area-boton">
-              <button class="mdc-button mdc-button--raised rojo flex-center">               
+              <button class="mdc-button mdc-button--raised rojo flex-center" (click) = "AgregarAlCarrito(producto.id);">               
                 <i class="material-icons mdc-icon-button__icon">add_shopping_cart</i>
                 <span class="mdc-button__ripple"></span> Agregar
               </button>
@@ -265,7 +266,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                  <button class="mdc-button mdc-button--raised bg-primary flex-center">               
+                  <button class="mdc-button mdc-button--raised bg-primary flex-center" (click) = "AgregarAlCarrito(producto.id);">               
                     <i class="material-icons mdc-icon-button__icon">add_shopping_cart</i>
                     <span class="mdc-button__ripple"></span> Agregar
                 </button>
@@ -276,7 +277,7 @@
         </div>
 
         
-      </main>
+    </main>
 
       <!-- 
     -->
