@@ -12,3 +12,39 @@ html, body {
 .padleft {
   padding-left: 25rem;
 }
+
+.tarjeta300 {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  background-color: wheat;
+  margin: 0.3rem;
+}
+
+.foto{
+  align-self: flex-start;
+  max-width: 30%;
+  display: inline;
+}
+
+.blanco{
+  background-color: white !important;
+}
+
+.texto-rojo{
+  color: red !important;
+}
+
+.area-boton{
+  width: 100%;
+  align-self: center;
+}
+
+.flex-center{
+  align-items: center;
+  flex: auto;
+}
+
+.w100{
+  width: 100%;
+}

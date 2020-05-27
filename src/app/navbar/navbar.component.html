@@ -27,8 +27,40 @@
           </div>
         </li>
 
-        <li class="nav-item">
-          <a href="" class="nav-link"> SHOOPING CART </a>
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> SHOOPING CART </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            
+            <div *ngFor="let producto of navCart; index as index;">
+
+              
+              <div class="tarjeta300 float">
+                <img src="{{producto.imagenLink}}" alt="" class="img-fluid img-thumbnail foto">
+                <span>{{producto.nombre}}</span>
+                <div class="area-boton w100">
+                  
+                  <button class="mdc-button mdc-button--raised blanco texto-rojo w100" (click) = "deleteNavCart(index);">               
+                    <i class="material-icons mdc-icon-button__icon">delete</i>
+                    <span class="mdc-button__ripple"></span> Eliminar
+                  </button>
+                </div>
+                
+                  <!--
+                  <div class="pieDeTarjeta">
+                    <div class="mdc-typography mdc-typography--body2 center price">${{producto.precio}}</div>
+                  </div>
+                  <div class="mdc-typography mdc-typography--subtitle2 overflow-hidden texto">{{producto.descripcion}}</div>
+                </div>
+                
+                -->
+              </div>
+             
+            </div>
+
+      
+              
+
+          </div>
         </li>
 
       </ul>
