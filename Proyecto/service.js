@@ -1,23 +1,30 @@
 const express = require("express")
 const cors = require('cors');
+const CookieParser = require('cookie-parser');
+//Para parsear las cookies y leerlas en los request
 
 // const MongoClient = require("mongodb").MongoClient;
 const BodyParser =require('body-parser');
 const app = express();
-// const cors =require ('cors');
 var Url = require('url-parse');
+
 
 app.use(BodyParser.urlencoded({
     extended:true
 }));
 app.use(BodyParser.json());
-
+app.use(CookieParser()); //Leer cookies a nivel servidor
+//Modificar el CORS para hacer que el servicio solo funcione con nuestra app (Evitar que servicios externos consuman esta app de carrito)
 app.use(cors({
-    origin: '*'
-}))
-// app.use(cors({
-//     origin:'*'
-// }));
+    credentials: true, 
+    origin: 'http://localhost:4200'
+}));
+
+const Carts = {}; //Variable servidor temporal de sesiones
+
+/* app.use(cors({
+     origin:'*'
+ }));*/
 
 //Mongoose
 var mongoose = require('mongoose');
@@ -51,4 +58,49 @@ app.use('/student', endpointStudent);
 var  endpointTeacher = require ('./Routers/Teacher');
 app.use('/teacher', endpointTeacher);
 */
+
+/*var  endpointProducto = require ('./Routers/Carrito');
+app.use('/cart', endpointProducto);*/
+app.use( '/cart/generate', (req, res )=>{
+    var cartID = '';
+    //Si no existe la sesión del carrito, generar uno nuevo
+    if( !req.cookies['cartID'] )
+    {
+        var randomSeed = new Date();
+        cartID = randomSeed.getDay() + '-' + randomSeed.getUTCMilliseconds();
+        res.cookie( 'cartID', cartID , { maxAge: 99999999, httpOnly: false });
+        Carts[cartID] = { products: [], price: 0 };
+    }
+    //Si ya existe, buscar el carrito de esa sesión
+    else
+    {
+        cartID = req.cookies['cartID'] + '';
+    }
+
+    //Enviar el carrito en el estado en el que se quedó la última vez (O nuevo, en su caso)
+    res.send( Carts[cartID] );
+});
+
+app.use( '/cart/add', (req, res )=>{
+    var cartID = '';
+    var parameters = req.query;
+    //Si no existe la sesión del carrito, generar uno nuevo
+    if( !req.cookies['cartID'] )
+    {
+        var randomSeed = new Date();
+        cartID = randomSeed.getDay() + '-' + randomSeed.getUTCMilliseconds();
+        res.cookie( 'cartID', cartID , { maxAge: 99999999, httpOnly: false });
+        Carts[cartID] = { products: [], price: 0 };
+    }
+    //Si ya existe, buscar el carrito de esa sesión
+    else
+    {
+        cartID = req.cookies['cartID'] + '';
+        Carts[cartID].products.push(parameters.id);
+    }
+
+    //Enviar el carrito en el estado en el que se quedó la última vez (O nuevo, en su caso)
+    res.send( Carts[cartID] );
+});
+
 app.listen(777);
