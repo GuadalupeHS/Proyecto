@@ -10,47 +10,47 @@ declare var $: any;
 })
 
 export class AlumnosComponent implements AfterViewInit {
-  alumnos = [];
-  isLoadingAlumnos = true;
+  // alumnos = [];
+  // isLoadingAlumnos = true;
 
-  sexoAlumno = 'M';
-  edadAlumno = null;
+  // sexoAlumno = 'M';
+  // edadAlumno = null;
 
-  SearchAlumnos = function () {
-    var params = '?';
-    var numParams = 0;
-    var self = this;
+  // SearchAlumnos = function () {
+  //   var params = '?';
+  //   var numParams = 0;
+  //   var self = this;
 
-    if( this.sexoAlumno != null){
-      params += (numParams != 0 ? '&': '') + 'sexo='+this.sexoAlumno;
-      numParams++;
-    }
+  //   if( this.sexoAlumno != null){
+  //     params += (numParams != 0 ? '&': '') + 'sexo='+this.sexoAlumno;
+  //     numParams++;
+  //   }
 
-    if(this.edadAlumno != null){
-      params += (numParams != 0 ? '&': '') + 'edad='+this.edadAlumno;
-      numParams++;
-    }
+    // if(this.edadAlumno != null){
+    //   params += (numParams != 0 ? '&': '') + 'edad='+this.edadAlumno;
+    //   numParams++;
+    // }
 
-    $.ajax({
-      method: 'get',
-      url: 'http://localhost:777/student/search'+params,
-      success: function (result) {
-        self.alumnos = result;
-        self.isLoadingAlumnos = false;
-      },
-      error: function (){
-        self.alumnos = [];
-        self.isLoadingAlumnos = false;
-      }
-    });
+  //   $.ajax({
+  //     method: 'get',
+  //     url: 'http://localhost:777/student/search'+params,
+  //     success: function (result) {
+  //       self.alumnos = result;
+  //       self.isLoadingAlumnos = false;
+  //     },
+  //     error: function (){
+  //       self.alumnos = [];
+  //       self.isLoadingAlumnos = false;
+  //     }
+  //   });
 
-  }
+  // }
 
 
-  ngAfterViewInit(): void {
-    var self = this;
+  // ngAfterViewInit(): void {
+  //   var self = this;
 
-    $($('input[type=radio]')[0]).click();
+  //   $($('input[type=radio]')[0]).click();
     /*$(function(){
       
     }*/

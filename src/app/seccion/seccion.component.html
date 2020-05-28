@@ -1,4 +1,28 @@
 <main class="container">
+    <div [hidden]="seccion !== VIEWS.Comida">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="comida" src="../../assets/images/food.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Comida</h1></div>
+        </header>
+    </div>
+    <div [hidden]="seccion !== VIEWS.Limpieza">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="limpieza" src="../../assets/images/limpieza.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Limpieza</h1></div>
+        </header>
+    </div>
+    <div [hidden]="seccion !== VIEWS.Accesorios">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="accesorios" src="../../assets/images/accesorios.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Accesorios</h1></div>
+        </header>
+    </div>
+    <div [hidden]="seccion !== VIEWS.Juguetes">
+        <header class="portada row margin0">
+            <div class="col-5"><img class="img-fluid" alt="juguetes" src="../../assets/images/juguetes.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo">Juguetes</h1></div>
+        </header>
+    </div>
 
     <section class="row margin0 height-auto padding10"> 
     
@@ -68,4 +92,4 @@
         </section>
     </section>
         
-    </main>
+

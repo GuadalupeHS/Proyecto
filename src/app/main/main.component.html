@@ -1,3 +1,4 @@
+
 <div id="carouselExampleFade" class="carousel slide carousel-fade margen" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -19,7 +20,6 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
   
     <section class="row margin0 height-auto padding10"> 
 
@@ -39,36 +39,55 @@
                         </div>
                 </aside>
 
-                <section class="borde-negro col-lg-10 areacat padding0 px-2">
-                        <div class="row mar">
-                            <div class="col-12 titulo2">Categoria</div>
+                  <section class="borde-negro col-lg-10 areacat padding0 px-2">
+                      <div class="row mar">
+                          <div class="col-12 titulo2">Mascotas</div>
+                      </div>
+                      <div class="row mar height-auto">
+                        <div class="col-6 col-md-4 col-lg-3">
+                          <img class=" petsize" src="../../assets/images/dog.png" >
                         </div>
-                        <div class="row mar height-auto">
-                            <div class="col-6 col-md-4 col-lg-3 catesize">
-                                <div class="div-img row margin0 padding0" >
-                                  <img class="img col-12" src="../../assets/images/baño.png" >
-                                  <div class="text col-12">Limpieza</div>
-                                </div>
+                          <div class="col-6 col-md-4 col-lg-3">
+                              <div  class="petboton petsnames"><a routerLink="/categorias" [queryParams]="{mascota: 'Perros'}" >Perros</a></div>
                             </div>
-        
-                            <div class="col-6 col-md-4 col-lg-3 catesize">
-                                <div class="div-img row margin0 padding0" >
-                                  <img class="img col-12" src="../../assets/images/food1.png" >
-                                  <div class="text col-12">Comida</div>
-                                </div>
-                            </div> 
-                            <div class="col-6 col-md-4 col-lg-3 catesize">
-                                <div class="div-img row margin0 padding0" >
-                                  <img class="img col-12 margin0 padding0" src="../../assets/images/juguetes.png" >
-                                  <div class="text col-12">Juguetes</div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 col-lg-3 catesize">
-                                <div class="div-img row margin0 padding0" >
-                                    <img class="img col-12 margin0 padding0" src="../../assets/images/accesorios.png" >
-                                    <div class="text col-12">Accesorios</div>
-                                </div>
-                            </div>
-                    </div>
-                </section>
-    </section>
+                          <div class="col-6 col-md-4 col-lg-3">
+                              <img class=" petsize" src="../../assets/images/cat.png" >
+                          </div>
+                          <div class="col-6 col-md-4 col-lg-3">
+                              <div  class="petboton petsnames"><a  routerLink="/categorias" [queryParams]="{mascota: 'Gatos'}" href="#">Gatos</a></div>
+                          </div>
+                      </div>
+                      <div class="row mar height-auto">
+                          <div class="col-6 col-md-4 col-lg-3">
+                              <img class=" petsize" src="../../assets/images/hamster.png" >
+                          </div>
+                          <div class="col-6 col-md-4 col-lg-3">
+                              <div class="petboton petsnames"><a   routerLink="/categorias" [queryParams]="{mascota: 'Mamiferos'}"> Mamíferos</a></div>
+                          </div>
+                          <div class="col-6 col-md-4 col-lg-3">
+                              <img class=" petsize" src="../../assets/images/pajaro.png" >
+                          </div>
+                          <div class="col-6 col-md-4 col-lg-3">
+                              <div class="petboton petsnames"><a  routerLink="/categorias" [queryParams]="{mascota: 'Aves'}"> Aves </a></div>
+                          </div>
+                      </div>
+                      <div class="row mar height-auto">
+                          <div class="col-6 col-md-4 col-lg-3">
+                              <img class=" petsize" src="../../assets/images/lagarto.png" >
+                          </div>
+                          <div class="col-6 col-md-4 col-lg-3">
+                              <div class="petboton petsnames"><a  routerLink="/categorias" [queryParams]="{mascota: 'Reptiles'}">Reptiles</a></div>
+                          </div>
+                          <div class="col-6 col-md-4 col-lg-3">
+                              <img class=" petsize" src="../../assets/images/peces.png" >
+                          </div>
+                          <div class="col-6 col-md-4 col-lg-3">
+                              <div class="petboton petsnames"><a  routerLink="/categorias" [queryParams]="{mascota: 'Peces'}">Peces</a></div>
+                          </div>
+                      </div>
+    
+                  </section>
+                  
+
+      </section>
+ 

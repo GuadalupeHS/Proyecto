@@ -43,6 +43,13 @@ margin-top: 30px;
     position: absolute;
     border: .1rem solid black;
 }
+
+.width100{
+    width: 100%;
+}
+.orden{
+    align-items: flex-end;
+}
 .titulo{
     font-size: 10vw;
     padding: 0;
@@ -227,13 +234,19 @@ margin-top: 30px;
     width: auto;
     height: fit-content;
     max-width: 200px;
+    height: 30rem;
     margin: 0.3rem;
     background-color: wheat;
+    overflow: auto;
 }
 
 .float{
     float: left;
     margin-right: 0.5rem;
+}
+
+.floatRight{
+    float: right;
 }
 
 .producto-nombre{
@@ -254,12 +267,21 @@ margin-top: 30px;
 
 .texto{
     padding: 0.2rem;
+    overflow: auto;
+    height: 10rem;
+}
+
+.pieDeTarjeta{
+    height: fit-content;
+    overflow: auto;
+    height: 21rem;
 }
 
 .area-boton{
     width: 85%;
     display: flex;
     padding: 1rem;
+    height: 5rem;
 }
 
 .verde{

@@ -14,7 +14,8 @@ import { AdminComponent } from './admin/admin.component';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { MainComponent } from './main/main.component';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { MainComponent } from './main/main.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
