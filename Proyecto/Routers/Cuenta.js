@@ -146,7 +146,6 @@ router.get('/login',async (req, res) =>{
     res.end();
 });
 
-
 router.get('/:usuario', async (req, res)=>{
     var required = req.params;
     var filter = {};
@@ -185,17 +184,25 @@ router.post('/:usuario', async (req, res)=>{
     }
     res.end();
 });
-router.put('/:usuario', async (req, res)=>{
-    var required = req.params;
+router.put('/info', async (req, res)=>{
+    var required = req.query;
     var filter = {};
     filter.usuario =required.usuario;
+    // console.log(req);
+    console.log(filter.usuario)
     var encontrados = await Cuentas.findOne(filter);
     if( !encontrados)
     {
         res.send( {error:'Esta cuenta no existe'});
         return;
     }
-    var cuenta = req.body;
+    // var insertado = await Cuentas.bulkWrite([{
+    //     updateOne:{document :{usuario:req.body.usuario, email: req.body.email, nombre: req.body.nombre, apellidoPaterno:req.body.apellidoPaterno, apellidoMaterno:req.body.apellidoMaterno,
+    //          calle:req.body.calle, numExterior:req.body.numExterior, numInterior: req.body.numInterior, colonia:req.body.colonia,
+    //         codigoPostal:req.body.codigoPostal, municipio:req.body.municipio, estado:req.body.estado, pais:req.body.pais}}
+
+    // }]);
+    var cuenta = req.query;
     cuenta.usuario = filter.usuario;
     var insertado = await Cuentas.updateOne(filter, {$set: cuenta});
     if( insertado)
