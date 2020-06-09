@@ -32,7 +32,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 0.5rem;"> Compras
+          <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 0.5rem;"  (click) = "actualizarCarrito();"> Compras
              <img src="../../assets/navbar/shopcart.png" style="width:2rem;height:2rem;"> </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             
@@ -44,7 +44,7 @@
                 <span>{{producto.nombre}}</span>
                 <div class="area-boton w100">
                   
-                  <button class="mdc-button mdc-button--raised blanco texto-rojo w100" (click) = "deleteNavCart(index);">               
+                  <button class="mdc-button mdc-button--raised blanco texto-rojo w100" (click) = "deleteNavCart(producto.index);">               
                     <i class="material-icons mdc-icon-button__icon">delete</i>
                     <span class="mdc-button__ripple"></span> Eliminar
                   </button>

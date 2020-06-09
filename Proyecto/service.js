@@ -3,16 +3,10 @@ const cors = require('cors');
 const CookieParser = require('cookie-parser');
 //Para parsear las cookies y leerlas en los request
 
-const CookieParser = require('cookie-parser'); //Para parsear las cookies y leerlas en los request
 // const MongoClient = require("mongodb").MongoClient;
 const BodyParser =require('body-parser');
 const app = express();
 var Url = require('url-parse');
-const Carts = {}; //Variable servidor temporal de sesiones
-
-
-
-
 
 app.use(BodyParser.urlencoded({
     extended:true
@@ -60,50 +54,6 @@ app.use('/producto', endpointProducto);
 
 var endpointPedido = require ('./Routers/Pedido');
 app.use('/pedido', endpointPedido);
-
-/*var  endpointProducto = require ('./Routers/Carrito');
-app.use('/cart', endpointProducto);*/
-app.use( '/cart/generate', (req, res )=>{
-    var cartID = '';
-    //Si no existe la sesión del carrito, generar uno nuevo
-    if( !req.cookies['cartID'] )
-    {
-        var randomSeed = new Date();
-        cartID = randomSeed.getDay() + '-' + randomSeed.getUTCMilliseconds();
-        res.cookie( 'cartID', cartID , { maxAge: 99999999, httpOnly: false });
-        Carts[cartID] = { products: [], price: 0 };
-    }
-    //Si ya existe, buscar el carrito de esa sesión
-    else
-    {
-        cartID = req.cookies['cartID'] + '';
-    }
-
-    //Enviar el carrito en el estado en el que se quedó la última vez (O nuevo, en su caso)
-    res.send( Carts[cartID] );
-});
-
-app.use( '/cart/add', (req, res )=>{
-    var cartID = '';
-    var parameters = req.query;
-    //Si no existe la sesión del carrito, generar uno nuevo
-    if( !req.cookies['cartID'] )
-    {
-        var randomSeed = new Date();
-        cartID = randomSeed.getDay() + '-' + randomSeed.getUTCMilliseconds();
-        res.cookie( 'cartID', cartID , { maxAge: 99999999, httpOnly: false });
-        Carts[cartID] = { products: [], price: 0 };
-    }
-    //Si ya existe, buscar el carrito de esa sesión
-    else
-    {
-        cartID = req.cookies['cartID'] + '';
-        Carts[cartID].products.push(parameters.id);
-    }
-
-    //Enviar el carrito en el estado en el que se quedó la última vez (O nuevo, en su caso)
-    res.send( Carts[cartID] );
-});
 
 
 /*
@@ -175,7 +125,7 @@ app.use( '/cart/delete', (req, res )=>{
         cartID = req.cookies['cartID'] + '';
 
         var index = parseInt(parameters.index);
-        Carts[cartID].products.splice(index, index); 
+        Carts[cartID].products.splice(index, 1); 
 
     }
 
