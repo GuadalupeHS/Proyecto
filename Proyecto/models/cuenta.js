@@ -11,7 +11,7 @@ mongoose.model( 'Cuenta', new mongoose.Schema({
     carrito: Array,
     calle: String,
     numExterior: Number,
-    numInteriro: Number,
+    numInterior: Number,
     colonia: String,
     codigoPostal: Number,
     municipio: String,
@@ -23,6 +23,6 @@ mongoose.model( 'Cuenta', new mongoose.Schema({
     numTarjeta: Number,
     fechaExp: String,
     cvv: Number,
-    idProveedor:Number,//or null,
-    verificado:Boolean
+    idProveedor:Number,
+    verificado: Boolean  //or null
 }), 'Cuentas');

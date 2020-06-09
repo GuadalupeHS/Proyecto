@@ -1,45 +1,64 @@
-<main  [hidden]="registro !== ACT.Registro"  class="container" >
-    <h1>Registro</h1>
-    <form name="f1" >
-        <div class="form-group">
-            <label for="inputEmail">Email</label>
-            <input  type="email" name="email" [(ngModel)] = "user.email"  class="form-control" id="inputEmail" placeholder="email@example.com"  required>     
+<main [hidden]="registro !== ACT.Registro"  class="container" >
+<div class="container">
+    <div class="row" style="margin-top: 2rem;">
+        <div class="col-lg-6">
+            <img src="../../assets/registro/registro.png" style="width: 30rem; height: 30rem; margin-left: 8rem;" >
         </div>
-        <div class="form-group">
-            <label for="inputUsuario">Usuario</label>
-            <input type="text" name="usuario" [(ngModel)] = "user.usuario"  class="form-control" id="inputUsuario" placeholder="Ingresa el Usuario"  required >
-        </div>
-        <div class="form-group">
-            <label for="inputName">Nombre</label>
-            <input  type="text" name="nombre" [(ngModel)] = "user.nombre"  class="form-control" id="inputName" placeholder="Ingresa el nombre"  required>
-           
-        </div>
-        <div class="form-group">
-            <label for="inputApaterno">Apellido Paterno</label>
-            <input  type="text" name="apellidoPaterno" [(ngModel)] = "user.apellidoPaterno"  class="form-control" id="inputApaterno" placeholder="Ingresa el primer apellido" required>
-        </div>
-        <div class="form-group">
-            <label for="inputAmaterno">Apellido Materno</label>
-            <input  type="text" name="apellidoMaterno" [(ngModel)] = "user.apellidoMaterno"  class="form-control" id="inputAmaterno" placeholder="Ingresa el segundo apellido"  required>
-        </div>
-        
-        <div class="form-group">
-            <label for="inputPassword">Contraseña</label>
-            <input type="password" name="password" [(ngModel)] = "user.password"  class="form-control" id="inputPassword" name="clave1" placeholder="Ingresa la Contraseña" pattern=".{6,}" required >
-        </div>
-        <!-- <div class="form-group">
-            <label for="inputPassword">Confirmar Contraseña</label>
-            <input type="password" class="form-control" id="inputPassword" name="clave2" placeholder="Confirmar Contraseña" pattern=".{6,}" required>
-        </div> -->
+        <div class="col-lg-6">
+            <form>
+                <h1> Registrate </h1>
+                <small id="registrate" class="form-text text-muted" style="margin-bottom: 1rem;">
+                    ¡Es Gratis! Y solo para gente que quiere ser cool y hacerse notar.
+                  </small>
 
-        <div class="form-group">
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                <label class="form-check-label" for="dropdownCheck"> He leído y acepto los términos y condiciones</label>
-            </div>
-        </div>
-        <button  type="submit" (click)="PostRegister();"   class="btn btn-primary">Registrar</button>
 
-    </form>
+
+                  <div class="form-row">
+                      <div class="form-group col-lg-6">
+                        <label for="inputApaterno">Apellido Paterno: </label>
+                        <input  type="text" name="apellidoPaterno" [(ngModel)] = "user.apellidoPaterno"  class="form-control" id="inputApaterno" placeholder=" Apellido Paterno " minlength="2" required>
+                      </div>
+
+                      <div class="form-group col-lg-6">
+                        <label for="inputAmaterno">Apellido Materno: </label>
+                        <input  type="text" name="apellidoMaterno" [(ngModel)] = "user.apellidoMaterno"  class="form-control" id="inputAmaterno" placeholder="Apellido Materno" minlength="2"  required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputName">Nombre: </label>
+                    <input  type="text" name="nombre" [(ngModel)] = "user.nombre"  class="form-control" id="inputName" placeholder="Nombre" minlength="2" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputEmail">Email: </label>
+                    <input  type="email" name="email" [(ngModel)] = "user.email"  class="form-control" id="inputEmail" placeholder="usuario@dominio.com"  required> 
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-lg-6">
+                        <label for="inputUsuario">Usuario: </label>
+                        <input type="text" name="usuario" [(ngModel)] = "user.usuario"  class="form-control" id="inputUsuario" placeholder="Darth Vader suena cool ¿no?"  minlength="6" required > 
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label for="inputPassword">Contraseña: </label>
+                        <input type="password" name="password" [(ngModel)] = "user.password"  class="form-control" id="inputPassword" name="clave1" placeholder="******" pattern=".{6,}" required >
+                    </div>
+                  </div>
+
+                  
+                <div class="form-group" style="margin-left:7rem;">
+                    <div class="form-check ">
+                        <input type="checkbox" class="form-check-input" id="dropdownCheck" (change)="aceptarTyC = !aceptarTyC">
+                        <label class="form-check-label" for="dropdownCheck"> He leído y acepto los términos y condiciones.</label>
+                    </div>
+                </div>
+                <button  type="submit" (click)="PostRegister();" class="btn btn-primary" style="width: 100%;">Registrarse</button>
+            </form>
+
+            <!-- ALERTAS -->
+
+        </div>
+    </div>
+</div>
 </main>
-

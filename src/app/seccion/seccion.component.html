@@ -1,28 +1,67 @@
 <main class="container">
+
+    <!-- INICIO TITULO DE LAS SECCIONES-->
     <div [hidden]="seccion !== VIEWS.Comida">
-        <header class="portada row margin0">
-            <div class="col-5"><img class="img-fluid" alt="comida" src="../../assets/images/food.png" alt="" class="imagen"></div>
-            <div class="col-7"><h1 class="titulo">Comida</h1></div>
+        <header class="row bg-dark" style="margin-bottom: 1rem; margin-top: 0.5rem;">
+            <!-- IMAGEN -->
+            <div class="col-lg-5"><img src="../../assets/sections/pet-food.png" class="headerimg"></div>
+            <!-- TITULO DE LA SECCION-->
+            <div class="col-lg-7"> <h1 class="headertitulo">ALIMENTO</h1> </div>
         </header>
+
+        <div>
+            <span> 
+                <a routerLinkActive="#"> Home <img src="../../assets/sections/next.png" style="width: 0.5rem; height: 0.5rem;"></a> Alimento
+            </span>
+        </div>
     </div>
+
+
     <div [hidden]="seccion !== VIEWS.Limpieza">
-        <header class="portada row margin0">
-            <div class="col-5"><img class="img-fluid" alt="limpieza" src="../../assets/images/limpieza.png" alt="" class="imagen"></div>
-            <div class="col-7"><h1 class="titulo">Limpieza</h1></div>
+        <header class="row bg-dark" style="margin-bottom: 1rem; margin-top: 0.5rem;">
+            <!-- IMAGEN -->
+            <div class="col-lg-5"><img src="../../assets/sections/clean.png" class="headerimg"></div>
+            <!-- TITULO DE LA SECCION-->
+            <div class="col-lg-7"> <h1 class="headertitulo">LIMPIEZA</h1> </div>
         </header>
+        <div>
+            <span> 
+                <a routerLinkActive="#"> Home <img src="../../assets/sections/next.png" style="width: 0.5rem; height: 0.5rem;"></a> Limpieza
+            </span>
+        </div>
+    </div>
+
+
+
+
+    <div [hidden]="seccion !== VIEWS.Juguetes">
+        <header class="row bg-dark" style="margin-bottom: 1rem; margin-top: 0.5rem;">
+            <!-- IMAGEN -->
+            <div class="col-lg-5"><img src="../../assets/sections/toys.png" class="headerimg"></div>
+            <!-- TITULO DE LA SECCION-->
+            <div class="col-lg-7"> <h1 class="headertitulo">JUGUETES</h1> </div>
+        </header>
+        <div>
+            <span> 
+                <a routerLinkActive="#"> Home <img src="../../assets/sections/next.png" style="width: 0.5rem; height: 0.5rem;"></a> Juguetes 
+            </span>
+        </div>
     </div>
     <div [hidden]="seccion !== VIEWS.Accesorios">
-        <header class="portada row margin0">
-            <div class="col-5"><img class="img-fluid" alt="accesorios" src="../../assets/images/accesorios.png" alt="" class="imagen"></div>
-            <div class="col-7"><h1 class="titulo">Accesorios</h1></div>
+        <header class="row bg-dark" style="margin-bottom: 1rem; margin-top: 0.5rem;">
+            <!-- IMAGEN -->
+            <div class="col-lg-5"><img src="../../assets/sections/accesories.png" class="headerimg"></div>
+            <!-- TITULO DE LA SECCION-->
+            <div class="col-lg-7"> <h1 class="headertitulo">ACCESORIOS</h1> </div>
         </header>
+        <div>
+            <span> 
+                <a routerLinkActive="#"> Home <img src="../../assets/sections/next.png" style="width: 0.5rem; height: 0.5rem;"></a> Accesorios
+            </span>
+        </div>
     </div>
-    <div [hidden]="seccion !== VIEWS.Juguetes">
-        <header class="portada row margin0">
-            <div class="col-5"><img class="img-fluid" alt="juguetes" src="../../assets/images/juguetes.png" alt="" class="imagen"></div>
-            <div class="col-7"><h1 class="titulo">Juguetes</h1></div>
-        </header>
-    </div>
+
+    <!-- FIN TITULOS DE LAS SECCIONES-->
 
     <section class="row margin0 height-auto padding10"> 
     

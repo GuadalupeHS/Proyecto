@@ -6,6 +6,9 @@ import { AdminComponent } from './admin/admin.component';
 import { MainComponent} from './main/main.component';
 import { SeccionComponent } from './seccion/seccion.component'
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { SuccessComponent } from './success/sucess.component';
+
 
 
 const routes: Routes = [
@@ -13,11 +16,13 @@ const routes: Routes = [
   { path: 'seccion', component: SeccionComponent},
   { path: 'catalogo', component: CatalogoComponent},  
   { path: 'register', component: RegisterComponent},
+  { path: 'register/success', component: SuccessComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'main', component: MainComponent},
   { path: 'secciones', component: SeccionComponent},
-  { path: '', redirectTo:'/MainComponent', pathMatch: 'full'},
-  { path: '**', component: MainComponent},
+  { path: 'login', component: LoginComponent},
+  { path: '', redirectTo:'/main', pathMatch: 'full'},
+  { path: '**', component: MainComponent}
 
 
 

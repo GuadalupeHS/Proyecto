@@ -15,7 +15,8 @@
         </div>
       </div>
     </div>
-      <aside class="col-lg-2 lado content height-content borde-negro rounded marginT1rem">
+
+    <aside class="col-lg-2 lado content height-content borde-negro rounded marginT1rem">
                         <div class="row">
                             <div class="col-12 tam">Filtros</div>
                         </div>
@@ -226,29 +227,60 @@
                               </div>
                             </div>
                           </div>                            
-      </aside>
+    </aside>
 
-      <main class="col-lg-10 padding1rem">
+    <main class="col-lg-10 padding1rem">
            
         <div *ngFor="let producto of productos;">
           <div class="mdc-card tarjeta float">
-            <div class="mdc-card__primary-action" tabindex="0">
+            <div class="mdc-card__primary-action" tabindex="0" data-toggle="modal" [attr.data-target]="'#prueba'+producto.id">
             <div class="mdc-card__media mdc-card__media--square" style="background-image: url({{producto.imagenLink}});"></div>
               <div class="pieDeTarjeta">
-                <h1 class="producto-nombre">{{producto.nombre}}</h1>
+                <h1 class="producto-nombre overflow-hidden">{{producto.nombre}}</h1>
                 <div class="mdc-typography mdc-typography--body2 center price">${{producto.precio}}</div>
               </div>
+              <div class="mdc-typography mdc-typography--subtitle2 overflow-hidden texto">{{producto.descripcion}}</div>
             </div>
-            <div class="mdc-typography mdc-typography--subtitle2 texto">{{producto.descripcion}}</div>
+            
             <div class="area-boton">
-              <button class="mdc-button mdc-button--raised rojo flex-center">               
+              <button class="mdc-button mdc-button--raised rojo flex-center" (click) = "AgregarAlCarrito(producto.id);">               
                 <i class="material-icons mdc-icon-button__icon">add_shopping_cart</i>
                 <span class="mdc-button__ripple"></span> Agregar
               </button>
             </div>
           </div>
+
+          <div class="modal fade" [attr.id]="'prueba'+producto.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">{{producto.nombre}}</h5>
+                  <div class="mdc-typography mdc-typography--body2 center price">${{producto.precio}}</div>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <img class="foto" src="{{producto.imagenLink}}" alt="">
+                    {{producto.descripcion}}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button class="mdc-button mdc-button--raised bg-primary flex-center" (click) = "AgregarAlCarrito(producto.id);">               
+                    <i class="material-icons mdc-icon-button__icon">add_shopping_cart</i>
+                    <span class="mdc-button__ripple"></span> Agregar
+                </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
+
+        
+    </main>
+
+      <!-- 
+    -->
 
     </section>
     
