@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
 
 /*function getItems(carrito){
 
@@ -18,7 +19,6 @@ export class NavbarComponent implements OnInit {
   };
   
   CurrentView;
-  Cart = {};
   navCart = [];
   
   session = {
@@ -38,51 +38,9 @@ export class NavbarComponent implements OnInit {
     return array;
   }
 
-  ngOnInit(): void {
-    var cookies = this.GetCookies();
-    var self = this;
-    $.get({
-      url: 'http://localhost:777/cart/generate',
-      xhrFields: {
-        withCredentials: true
-      },
-      success: function (res) {
-        self.getItems(res);
-      }
-   
-    });
-
-  }
-
-  getItems = function(carrito){
-
-    for(var i = 0; i< carrito.products.length; i++){
-  
-      var self = this;
-      console.log(carrito.products[i])
-  
-      $.ajax({
-        method: 'get',
-        url: 'http://localhost:777/producto/'+carrito.products[i],
-        success: function (result){
-          console.log(result);
-          self.navCart.push(result);
-        },
-        error: function (){
-          console.log("Error")
-        }
-      });
-  
-  
-    }
-
-    console.log(this.navCart)
-  
-  }
-
   deleteNavCart = function(index) {
-    this.navCart.splice(index, index+1); 
-
+    console.log(index)
+    console.log("Eliminado: " + this.navCart.splice(index, 1).toString()); 
     var self = this;
 
     $.get({
@@ -91,11 +49,68 @@ export class NavbarComponent implements OnInit {
         withCredentials: true
       },
       success: function (res) {
-        console.log(res);
+        console.log("Nuevos productos");
         console.log(res.products);
       }
     });
     console.log(this.navCart)
   }
 
+
+  ngOnInit(): void {
+    this.actualizarCarrito()
+  }
+
+  actualizarCarrito = function() {
+    var cookies = this.GetCookies();
+    this.navCart = [];
+    var self = this;
+    $.get({
+      url: 'http://localhost:777/cart/generate',
+      xhrFields: {
+        withCredentials: true
+      },
+      success: function (res) {
+        console.log("Carrito Servidor")
+        console.log(res);
+        self.getItems(res);
+        //self.verificarOrden(res.products);
+      }
+   
+    });
+
+  }
+
+  getItems = function(carrito){
+    var productos = carrito.products;
+    var indices = { }
+    for(var i = 0; i<productos.length; i++){
+      indices[productos[i]] = i;
+    } 
+    console.log(indices)
+    console.log(productos);
+    for(var i = 0; i<productos.length; i++){
+  
+      var self = this;
+      console.log(productos[i])
+      $.ajax({
+        method: 'get',
+        url: 'http://localhost:777/producto/'+productos[i],
+        success: function (result){
+          result.index= indices[result.id];   
+          console.log(result)
+          self.navCart.push(result);
+        },
+        error: function (){
+          console.log("Error")
+        }
+      });
+  
+    }
+
+    console.log(this.navCart);
+    
+  }
+
+  
 }

@@ -8,6 +8,7 @@ import { SeccionComponent } from './seccion/seccion.component'
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SuccessComponent } from './success/sucess.component';
+import { EditInfoComponent} from './editinfo/editinfo.component'
 
 
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'main', component: MainComponent},
   { path: 'secciones', component: SeccionComponent},
   { path: 'login', component: LoginComponent},
-  { path: '', redirectTo:'/main', pathMatch: 'full'},
+  { path: 'user/edit', component: EditInfoComponent},
+  { path: '*', redirectTo:'/main', pathMatch: 'full'},
   { path: '**', component: MainComponent}
 
 

@@ -11,12 +11,22 @@ const VIEWS = {Comida:'Comida', Limpieza: 'Limpieza', Accesorios: 'Accesorios', 
 export class SeccionComponent{
   seccion;
 
+  filtros = {
+    departamento: '',
+    mascota: '',
+  }
   constructor(private route: ActivatedRoute, private router: Router) { 
     
     router.events.subscribe((val) => {
       this.seccion = this.route.snapshot.queryParams["seccion"];
+      this.filtros.departamento = this.seccion;
   });
     
+  }
+
+  cambiarRuta = function(mascota){
+    this.filtros.mascota = mascota
+    this.router.navigate(['/catalogo'], {queryParams: this.filtros});
   }
 
  

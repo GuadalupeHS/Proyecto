@@ -11,16 +11,17 @@ const VIEWSEC= {Perros: 'Perros', Gatos:'Gatos', Mamiferos:'Mamiferos', Aves:'Av
 export class CategoriasComponent {
 
   mascota;
+  departamento;
   constructor(private route: ActivatedRoute, private router: Router) { 
     
     router.events.subscribe((val) => {
       this.mascota = this.route.snapshot.queryParams["mascota"];
-  });
-    
+      this.departamento = this.route.snapshot.queryParams["departamento"]
+     });
   }
-
 
   CurrentView;
   VIEWSEC = VIEWSEC;
+ 
 
 }
