@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SuccessComponent } from './success/sucess.component';
 import { EditInfoComponent} from './editinfo/editinfo.component'
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'secciones', component: SeccionComponent},
   { path: 'login', component: LoginComponent},
   { path: 'user/edit', component: EditInfoComponent},
+  { path: 'checkout', component: CheckoutComponent},
   { path: '*', redirectTo:'/main', pathMatch: 'full'},
   { path: '**', component: MainComponent}
 

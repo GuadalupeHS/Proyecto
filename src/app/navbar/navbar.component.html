@@ -25,7 +25,7 @@
            Mi Cuenta <img src="../../assets/navbar/micuenta.png" style="width: 2rem; height: 2rem; margin-bottom: 1rem;">
           </a>
           <div class="dropdown-menu tcenter" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="/login" routerLinkActive="active"> Inicia Sesión </a>
+            <a class="dropdown-item" routerLink="/login" routerLinkActive="active"> Iniciar Sesión </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" routerLink="/register" [queryParams]="{registro: 'Registro'}"> Registrarse</a>
           </div>
@@ -36,6 +36,7 @@
              <img src="../../assets/navbar/shopcart.png" style="width:2rem;height:2rem;"> </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             
+            {{ruta}}
             <div *ngFor="let producto of navCart; index as index;">
 
               
@@ -62,6 +63,10 @@
              
             </div>
 
+            <div *ngIf="navCart.length == 0; else elseBlock"><p>Agregar contenido a tu carrito :)</p></div>
+            <ng-template #elseBlock>
+              <button type="button" class="btn btn-primary" routerLink="/checkout">Finalizar pedido</button>
+            </ng-template> 
       
               
 
