@@ -36,7 +36,6 @@
              <img src="../../assets/navbar/shopcart.png" style="width:2rem;height:2rem;"> </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             
-            {{ruta}}
             <div *ngFor="let producto of navCart; index as index;">
 
               
@@ -63,7 +62,7 @@
              
             </div>
 
-            <div *ngIf="navCart.length == 0; else elseBlock"><p>Agregar contenido a tu carrito :)</p></div>
+            <div *ngIf="(navCart === undefined || navCart.length == 0); else elseBlock"><p>Agregar contenido a tu carrito :)</p></div>
             <ng-template #elseBlock>
               <button type="button" class="btn btn-primary" routerLink="/checkout">Finalizar pedido</button>
             </ng-template> 

@@ -4,6 +4,7 @@ module.exports =
 mongoose.model( 'Cuenta', new mongoose.Schema({
     usuario: String,
     nombre: String,
+    id: String,
     apellidoPaterno: String,
     apellidoMaterno: String,
     password: String,

@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit {
   datosIncompletos = false;
   aceptarTyC = false;
   errorTyC= false;
+  sesion = false;
   user={
     usuario:'',
     email:'',
@@ -50,10 +51,9 @@ export class RegisterComponent implements OnInit {
     }
     this.errorTyC = false;
     
-    var datos= this.user.email +' '+ this.user.nombre + ' '+ this.user.apellidoPaterno + ' '+ this.user.apellidoMaterno + ' ' + this.user.password;
-
     if(!this.user.email || !this.user.nombre || !this.user.apellidoPaterno || !this.user.apellidoMaterno || !this.user.password ){
       this.datosIncompletos = true;
+      console.log("Datos Incompletos")
       return(this.datosIncompletos);
     }
     this.datosIncompletos = false;
@@ -66,6 +66,10 @@ export class RegisterComponent implements OnInit {
     params += 'email=' + this.user.email + '&';
     params += 'password=' + this.user.password;
 
+    if(this.sesion){
+      params += '&session=true';
+    }
+
     var numParams = 0;
     var self = this;
     
@@ -74,6 +78,9 @@ export class RegisterComponent implements OnInit {
     $.ajax({
       method: 'post',
       url: 'http://localhost:777/cuenta/new?'+params,
+      xhrFields: {
+        withCredentials: true
+      },
       success: function (result) {
        
         self.isLoadingRegisters = false;
