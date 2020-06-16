@@ -71,11 +71,27 @@ router.post('/new',async (req, res) =>{
         res.send("Debes cumplir con las características minimas de una cuenta");
         return;
     }
+    //Mantener sesión y crear id
+    var keepSession = true
+    if(params.sesion){ keepSession = false;}
+    var id = params.nombre[0].toUpperCase() + params.usuario[0].toUpperCase() + params.apellidoMaterno[0].toUpperCase();
+    var randomSeed = new Date();
+    id += randomSeed.getDate() + randomSeed.getUTCMonth() + randomSeed.getUTCMilliseconds() + randomSeed.getMinutes() + randomSeed.getSeconds();
+    params.id = id;
+
     
     var insertado = await Cuentas.create(params);
     if( insertado)
     {
+        if(params.sesion){ 
+            res.cookie( "UserId", id , { maxAge: 99999999, httpOnly: true });
+        }else{
+            res.cookie("UserId", id , {httpOnly: true });
+        }
+
+       
         res.send("se inserto correctamente ")
+        
     }
     else
     {
@@ -113,35 +129,40 @@ router.post('/new',async (req, res) =>{
     res.end();
 });
 
-
 router.get('/login',async (req, res) =>{
 
     var params = req.query;
     var filter = {};
     filter.email = params.email;
-    var encontrados = await Cuentas.findOne(filter);
-    if( encontrados)
-    {
-        res.send( {error:'Esta cuenta ya existe con el correo: ' + params.email + ' Esta dado de alta a nombre: ' + encontrados.nombre});
-        return;
-    } 
 
+    console.log(req.query)
     if(!params.email && !params.password)
     {
         res.send("Debes cumplir con las características minimas de una cuenta");
         return;
     }
-    
-    var insertado = await Cuentas.create(params);
-    if( insertado)
-    {
-        res.send("se inserto correctamente ")
-    }
-    else
-    {
-        res.send("Error");
-    }
 
+    var encontrado = await Cuentas.findOne(filter);
+
+    if( !encontrado)
+    {
+
+        res.send( {error:'Error, revise sus campos'});
+        return;
+    } 
+
+    if( (params.email == encontrado.email) && (params.password == encontrado.password) )
+    {
+        if(params.sesion){ 
+            res.cookie( "UserId", encontrado.id , { maxAge: 99999999, httpOnly: true });
+        }else{
+            res.cookie("UserId", encontrado.id , {httpOnly: true });
+        }
+        res.send("Login Correcto");
+    }else{
+
+        res.send( {error:'Error al ingresar a la cuenta, revisa tus campos'});
+    }
 
     res.end();
 });

@@ -1,30 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
-/*function getItems(carrito){
-
-}*/
 
 declare var $: any;
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'seccion',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css']
 })
 
-
-export class NavbarComponent implements OnInit {
-
-  constructor(private router: Router) { 
-
-    this.ruta = this.router.url;
-
-    
-  }
-
-  ruta;
+export class CheckoutComponent implements OnInit{
+  
   busqueda = {
     nombre: ''
   };
@@ -36,6 +23,8 @@ export class NavbarComponent implements OnInit {
     valid: false,
     user: 'skdfjsd'
   };
+
+  total = 99999;
 
   GetCookies = function()
   {
@@ -51,7 +40,6 @@ export class NavbarComponent implements OnInit {
 
   deleteNavCart = function(index) {
     console.log(index)
-    console.log("Eliminado: " + this.navCart.splice(index, 1).toString()); 
     var self = this;
 
     $.get({
@@ -61,7 +49,7 @@ export class NavbarComponent implements OnInit {
       },
       success: function (res) {
         console.log("Nuevos productos");
-        console.log(res.products);
+        self.actualizarCarrito();
       }
     });
     console.log(this.navCart)
@@ -98,6 +86,7 @@ export class NavbarComponent implements OnInit {
     for(var i = 0; i<productos.length; i++){
       indices[productos[i]] = i;
     } 
+    this.total = 0;
     console.log(indices)
     console.log(productos);
     for(var i = 0; i<productos.length; i++){
@@ -109,7 +98,9 @@ export class NavbarComponent implements OnInit {
         url: 'http://localhost:777/producto/'+productos[i],
         success: function (result){
           result.index= indices[result.id];   
-          console.log(result)
+          console.log(result);
+          console.log("Precio " + result.precio)
+          self.total += result.precio;
           self.navCart.push(result);
         },
         error: function (){
@@ -125,3 +116,4 @@ export class NavbarComponent implements OnInit {
 
   
 }
+

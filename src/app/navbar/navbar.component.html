@@ -62,6 +62,10 @@
              
             </div>
 
+            <div *ngIf="(navCart === undefined || navCart.length == 0); else elseBlock"><p>Agregar contenido a tu carrito :)</p></div>
+            <ng-template #elseBlock>
+              <button type="button" class="btn btn-primary" routerLink="/checkout">Finalizar pedido</button>
+            </ng-template> 
       
               
 

@@ -19,9 +19,9 @@ import { LoginComponent } from './login/login.component';
 import { SuccessComponent } from './success/sucess.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { EditInfoComponent } from './editinfo/editinfo.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { PerfilComponent } from './perfil/perfil.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
 
 
 @NgModule({
@@ -41,7 +41,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     SuccessComponent,
     PedidosComponent,
-    EditInfoComponent
+    EditInfoComponent,
+    CheckoutComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

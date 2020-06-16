@@ -8,7 +8,9 @@ import { SeccionComponent } from './seccion/seccion.component'
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SuccessComponent } from './success/sucess.component';
-import { EditInfoComponent} from './editinfo/editinfo.component'
+import { PerfilComponent } from './perfil/perfil.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+
 
 
 
@@ -22,7 +24,8 @@ const routes: Routes = [
   { path: 'main', component: MainComponent},
   { path: 'secciones', component: SeccionComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'user/edit', component: EditInfoComponent},
+  { path: 'checkout', component: CheckoutComponent},
+  { path: 'perfil', component: PerfilComponent},
   { path: '*', redirectTo:'/main', pathMatch: 'full'},
   { path: '**', component: MainComponent}
 
@@ -36,4 +39,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [ CategoriasComponent, CatalogoComponent,AdminComponent, MainComponent, RegisterComponent]
+export const routingComponents = [ CategoriasComponent, CatalogoComponent,AdminComponent, MainComponent, RegisterComponent, PerfilComponent]
