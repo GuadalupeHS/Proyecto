@@ -49,17 +49,17 @@ router.get('/search',async (req, res) =>{
 router.post('/new',async (req, res) =>{
 
     var params = req.query;
-    var filter = {};
-    filter.usuario = params.usuario;
-    var encontrados = await Cuentas.findOne(filter);
+    var userFilter = {};
+    userFilter.usuario = params.usuario;
+    var encontrados = await Cuentas.findOne(userFilter);
     if( encontrados)
     {
         res.send( {error:'Esta cuenta ya existe con el usuario: ' + params.usuario + ' Esta dado de alta a nombre: ' + encontrados.nombre});
         return;
     } 
-
-    filter.email = params.email;
-    var encontradosAux = await Cuentas.findOne(filter);
+    var mailFilter={};
+    mailFilter.email = params.email;
+    var encontradosAux = await Cuentas.findOne(mailFilter);
     if( encontradosAux)
     {
         res.send( {error:'Esta correo ya está registrado '});
