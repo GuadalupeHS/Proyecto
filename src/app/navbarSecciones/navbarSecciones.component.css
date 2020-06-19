@@ -1,0 +1,27 @@
+html, body {
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 100%; 
+    
+  }
+  * {
+    box-sizing: border-box; 
+  }
+
+  .sections{
+    margin-left: 5rem;
+    margin-right: 5rem;
+
+    font-family: 'Cabin', sans-serif;
+    
+  }
+ li a{
+    transition:0.5s;
+    
+}
+  li a:hover{
+      background-color:#D5D5D5;
+      transition: 0.5s; ;
+  }
+
