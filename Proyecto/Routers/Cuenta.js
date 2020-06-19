@@ -225,12 +225,6 @@ router.put('/info', async (req, res)=>{
         res.send( {error:'Esta cuenta no existe'});
         return;
     }
-    // var insertado = await Cuentas.bulkWrite([{
-    //     updateOne:{document :{usuario:req.body.usuario, email: req.body.email, nombre: req.body.nombre, apellidoPaterno:req.body.apellidoPaterno, apellidoMaterno:req.body.apellidoMaterno,
-    //          calle:req.body.calle, numExterior:req.body.numExterior, numInterior: req.body.numInterior, colonia:req.body.colonia,
-    //         codigoPostal:req.body.codigoPostal, municipio:req.body.municipio, estado:req.body.estado, pais:req.body.pais}}
-
-    // }]);
     var cuenta = req.query;
     cuenta.usuario = filter.usuario;
     // console.log(cuenta)

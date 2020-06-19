@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { fileURLToPath } from 'url';
 const VIEWOPT ={DatosP: 'DatosP', Editar:'Editar', AgregarDatos:'AgregarDatos'}
 //const VIEWOPT ={DatosP: 'DatosP', Editar:'Editar'}
 declare var $: any;
@@ -138,13 +139,17 @@ export class PerfilComponent implements OnInit{
     params += 'usuario=' + this.user.usuario+ '&';
     params += 'calle=' + this.user.calle + '&';
     params += 'numExterior=' + this.user.numExterior + '&';
-    params += 'numInterior=' + this.user.numInterior + '&';
     params += 'colonia=' + this.user.colonia + '&';
     params += 'codigoPostal=' + this.user.codigoPostal + '&';
     params += 'municipio=' + this.user.municipio + '&';
     params += 'estado=' + this.user.estado + '&';
     params += 'pais=' + this.user.pais + '&';
     params += 'telefono=' + this.user.telefono;
+    if(!this.user.numInterior || this.user.numInterior === 0){
+      params += '&numInterior=0';
+    }else{
+      params += '&numInterior=' + this.user.numInterior;
+    }
     var self = this; 
     
     $.ajax ({
@@ -152,14 +157,11 @@ export class PerfilComponent implements OnInit{
       url: 'http://localhost:777/cuenta/info?' + params,
       success: function(result){
         self.guardar=result;
-        self.isLoadingUser=false;
-      // alert ('Ok');
+        self.router.navigate(['/perfil'], {queryParams: {option:'DatosP'}});
     },
     error:function (xhr, ajaxOptions, thrownError){
       self.guardar=[];
       self.isLoadingUser=false;
-     
-     alert('error');
     }
     });
 
@@ -211,6 +213,8 @@ export class PerfilComponent implements OnInit{
       success: function(result){
         self.edits=result;
         self.isLoadingUser=false;
+        self.router.navigate(['/perfil'], {queryParams: {option:'DatosP'}});
+
       // alert ('Ok');
     },
     error:function (xhr, ajaxOptions, thrownError){
