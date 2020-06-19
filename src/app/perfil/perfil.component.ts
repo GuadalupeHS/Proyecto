@@ -31,8 +31,6 @@ export class PerfilComponent implements OnInit{
     "telefono":'',
     "password":''
   }
-
-  // usuario='';
   ngOnInit(): void {
 
 
@@ -116,7 +114,7 @@ export class PerfilComponent implements OnInit{
 
 // }
 
-
+}
   // user={
   //   calle:'',
   //   numExterior:'',

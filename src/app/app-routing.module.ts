@@ -24,8 +24,12 @@ const routes: Routes = [
   { path: 'main', component: MainComponent},
   { path: 'secciones', component: SeccionComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'checkout', component: CheckoutComponent},
+
+=======
   { path: 'perfil', component: PerfilComponent},
+
+  { path: 'checkout', component: CheckoutComponent},
+
   { path: '*', redirectTo:'/main', pathMatch: 'full'},
   { path: '**', component: MainComponent}
 
