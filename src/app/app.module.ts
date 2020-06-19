@@ -20,6 +20,7 @@ import { SuccessComponent } from './success/sucess.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { EditInfoComponent } from './editinfo/editinfo.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { PerfilComponent } from './perfil/perfil.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -41,7 +42,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SuccessComponent,
     PedidosComponent,
     EditInfoComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

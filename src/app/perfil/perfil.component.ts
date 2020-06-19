@@ -11,8 +11,67 @@ declare var $: any;
   
 })
 
-export class PerfilComponent{
+export class PerfilComponent implements OnInit{
   option;
+
+  user={
+    "usuario":'',
+    "email":'',
+    "nombre":'',
+    "apellidoPaterno":'',
+    "apellidoMaterno":'',
+    "calle":'',
+    "numExterior":'',
+    "numInterior":'',
+    "colonia":'',
+    "codigoPostal":'',
+    "municipio":'',
+    "estado":'',
+    "pais":'',
+    "telefono":'',
+    "password":''
+  }
+
+  // usuario='';
+  ngOnInit(): void {
+
+
+    var cookies = this.GetCookies();
+      console.log(cookies);
+        if(!cookies['UserID']){
+          console.log("Nel");
+          return(null);
+        }
+
+        var self = this;
+
+        $.get({
+          url: 'http://localhost:777/cuenta/' + cookies['UserID'],
+          xhrFields: {
+            withCredentials: true
+          },
+          success: function (res) {
+            self.user=res;
+
+          },
+          error: function (){
+            this.router.navigate(['/'], {});
+          }
+        });
+  }
+
+  GetCookies = function()
+  {
+    var cookies = document.cookie.split('; ');
+    console.log(cookies);
+    var array = {};
+    for( var i = 0; i < cookies.length; i++ )
+    {
+      var cookie = cookies[i].split('=');
+      array[cookie[0]] = cookie[1];
+    }
+    return array;
+  }
 
   constructor(private route: ActivatedRoute, private router: Router) { 
     
@@ -24,54 +83,39 @@ export class PerfilComponent{
   CurrentView;
   VIEWOPT=VIEWOPT;
 
-  cuentas = []; 
+//   cuentas = []; 
 
-  isLoadingCuentas = true;
-  usuario='';
-  SearchCuenta = function()
-  { 
-    var params ='?';
-    var numParams =0;
-    var self = this; 
-    if ( this.usuario != null)
-    {
-      params += ( numParams != 0 ? '&': '')+ 'usuario=' + this.usuario;
-      numParams++;
-    }
+//   isLoadingCuentas = true;
+ 
+//   SearchCuenta = function()
+//   {  
+  
+//     var params ='?';
+//     var numParams =0;
+//     var self = this; 
+//     if ( this.usuario != null)
+//     {
+//       params += ( numParams != 0 ? '&': '')+ 'usuario=' + this.usuario;
+//       numParams++;
+//     }
     
-    $.ajax ({
-      method: 'get',
-      url: 'http://localhost:777/cuenta/search' + params,
-      success: function(result){
-        self.cuentas=result;
-        self.isLoadingCuentas=false;
-      // alert ('Ok');
-    },
-    error:function (xhr, ajaxOptions, thrownError){
-      self.cuentas=[];
-      self.isLoadingCuentas=false;
-    // alert('error');
-    }
-  });
+//     $.ajax ({
+//       method: 'get',
+//       url: 'http://localhost:777/cuenta/search' + params,
+//       success: function(result){
+//         self.cuentas=result;
+//         self.isLoadingCuentas=false;
+//       // alert ('Ok');
+//     },
+//     error:function (xhr, ajaxOptions, thrownError){
+//       self.cuentas=[];
+//       self.isLoadingCuentas=false;
+//     // alert('error');
+//     }
+//   });
 
-}
-user={
-  "usuario":'',
-  "email":'',
-  "nombre":'',
-  "apellidoPaterno":'',
-  "apellidoMaterno":'',
-  "calle":'',
-  "numExterior":'',
-  "numInterior":'',
-  "colonia":'',
-  "codigoPostal":'',
-  "municipio":'',
-  "estado":'',
-  "pais":'',
-  "telefono":'',
-  "password":''
-}
+// }
+
 
   // user={
   //   calle:'',
@@ -86,10 +130,12 @@ user={
   // }
   guardar=[];
   isLoadingUser = true;
+
  
   AddInfo = function () {
+   
     var params = '';
-    params += 'usuario=' + this.usuario+ '&';
+    params += 'usuario=' + this.user.usuario+ '&';
     params += 'calle=' + this.user.calle + '&';
     params += 'numExterior=' + this.user.numExterior + '&';
     params += 'numInterior=' + this.user.numInterior + '&';
@@ -106,8 +152,6 @@ user={
       url: 'http://localhost:777/cuenta/info?' + params,
       success: function(result){
         self.guardar=result;
-        console.log(self.edits);
-        
         self.isLoadingUser=false;
       // alert ('Ok');
     },
@@ -139,11 +183,12 @@ user={
   //   "telefono":'',
   //   "password":''
   // }
-  edits=[];
+  edits={};
  
   EditInfo = function () {
+  
     var params = '';
-    params += 'usuario=' + this.usuario+ '&';
+    params += 'usuario=' + this.user.usuario+ '&';
     params += 'email=' + this.user.email + '&';
     params += 'nombre=' + this.user.nombre + '&';
     params += 'apellidoPaterno=' + this.user.apellidoPaterno + '&';
@@ -159,19 +204,17 @@ user={
     params += 'telefono=' + this.user.telefono +'&';
     params += 'password=' + this.user.password;
     var self = this; 
-    
+    console.log(params);
     $.ajax ({
       method: 'put',
       url: 'http://localhost:777/cuenta/info?' + params,
       success: function(result){
         self.edits=result;
-        console.log(self.edits);
-        
         self.isLoadingUser=false;
       // alert ('Ok');
     },
     error:function (xhr, ajaxOptions, thrownError){
-      self.edits=[];
+      self.edits={};
       self.isLoadingUser=false;
      
      alert('error');

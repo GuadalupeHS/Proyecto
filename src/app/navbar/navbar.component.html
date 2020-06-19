@@ -20,16 +20,34 @@
         <li class="nav-item">
           <a href="" class="nav-link" routerLink="/main" style="margin-top: 0.6rem;"> Home</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           Mi Cuenta <img src="../../assets/navbar/micuenta.png" style="width: 2rem; height: 2rem; margin-bottom: 1rem;">
-          </a>
-          <div class="dropdown-menu tcenter" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="/login" routerLinkActive="active"> Iniciar Sesión </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" routerLink="/register" [queryParams]="{registro: 'Registro'}"> Registrarse</a>
-          </div>
-        </li>
+        <div *ngIf="(session.valid === true); else noUser">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.nombre}}
+              <img src="../../assets/navbar/micuenta.png" style="width: 2rem; height: 2rem; margin-bottom: 1rem;">
+            </a>
+            <div class="dropdown-menu tcenter" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="/perfil" routerLinkActive="active"> Perfil</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/" (click) = "logOut();"> Cerrar sesion</a>
+            </div>
+          </li>
+        </div>
+            
+        <ng-template #noUser>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Mi Cuenta <img src="../../assets/navbar/micuenta.png" style="width: 2rem; height: 2rem; margin-bottom: 1rem;">
+                </a>
+                <div class="dropdown-menu tcenter" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="/login" routerLinkActive="active"> Iniciar Sesión </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" routerLink="/register" [queryParams]="{registro: 'Registro'}"> Registrarse</a>
+                </div>
+              </li>
+            </ng-template> 
+
+
+        
 
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 0.5rem;"  (click) = "actualizarCarrito();"> Compras

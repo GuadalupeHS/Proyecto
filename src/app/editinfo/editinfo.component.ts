@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+const VIEWOPT ={DatosP: 'DatosP', Editar:'Editar', AgregarDatos:'AgregarDatos'}
 declare var $: any;
 @Component({
   selector: 'editinfo',
@@ -6,7 +8,18 @@ declare var $: any;
   styleUrls: ['./editinfo.component.css']
 })
 export class EditInfoComponent {
-  constructor() { }
+  option;
+
+  constructor(private route: ActivatedRoute, private router: Router) { 
+    
+    router.events.subscribe((val) => {
+      this.option = this.route.snapshot.queryParams["option"];
+     
+     });
+  }
+  CurrentView;
+  VIEWOPT=VIEWOPT;
+
 
   user={
     "usuario":'',
@@ -64,8 +77,56 @@ export class EditInfoComponent {
      alert('error');
     }
     });
+  }
+  users={
+    calle:'',
+    numExterior:'',
+    numInterior:'',
+    colonia:'',
+    codigoPostal:'',
+    municipio:'',
+    estado:'',
+    pais:'',
+    telefono:''
+  }
+  guardar=[];
+  isLoadingUsers = true;
+ 
+  AddInfo = function () {
+    var params = '';
+    params += 'usuario=' + this.usuario+ '&';
+    params += 'calle=' + this.users.calle + '&';
+    params += 'numExterior=' + this.users.numExterior + '&';
+    params += 'numInterior=' + this.users.numInterior + '&';
+    params += 'colonia=' + this.users.colonia + '&';
+    params += 'codigoPostal=' + this.users.codigoPostal + '&';
+    params += 'municipio=' + this.users.municipio + '&';
+    params += 'estado=' + this.users.estado + '&';
+    params += 'pais=' + this.users.pais + '&';
+    params += 'telefono=' + this.users.telefono;
+    var self = this; 
+    
+    $.ajax ({
+      method: 'put',
+      url: 'http://localhost:777/cuenta/info?' + params,
+      success: function(result){
+        self.guardar=result;
+        console.log(self.edits);
+        
+        self.isLoadingUsers=false;
+      // alert ('Ok');
+    },
+    error:function (xhr, ajaxOptions, thrownError){
+      self.guardar=[];
+      self.isLoadingUsers=false;
+     
+     alert('error');
+    }
+    });
 
   }
+
+
   
 }
 
