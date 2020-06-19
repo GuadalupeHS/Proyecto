@@ -11,8 +11,65 @@ declare var $: any;
   
 })
 
-export class PerfilComponent{
+export class PerfilComponent implements OnInit{
   option;
+
+  user={
+    "usuario":'',
+    "email":'',
+    "nombre":'',
+    "apellidoPaterno":'',
+    "apellidoMaterno":'',
+    "calle":'',
+    "numExterior":'',
+    "numInterior":'',
+    "colonia":'',
+    "codigoPostal":'',
+    "municipio":'',
+    "estado":'',
+    "pais":'',
+    "telefono":'',
+    "password":''
+  }
+  ngOnInit(): void {
+
+
+    var cookies = this.GetCookies();
+      console.log(cookies);
+        if(!cookies['UserID']){
+          console.log("Nel");
+          return(null);
+        }
+
+        var self = this;
+
+        $.get({
+          url: 'http://localhost:777/cuenta/' + cookies['UserID'],
+          xhrFields: {
+            withCredentials: true
+          },
+          success: function (res) {
+            self.user=res;
+
+          },
+          error: function (){
+            this.router.navigate(['/'], {});
+          }
+        });
+  }
+
+  GetCookies = function()
+  {
+    var cookies = document.cookie.split('; ');
+    console.log(cookies);
+    var array = {};
+    for( var i = 0; i < cookies.length; i++ )
+    {
+      var cookie = cookies[i].split('=');
+      array[cookie[0]] = cookie[1];
+    }
+    return array;
+  }
 
   constructor(private route: ActivatedRoute, private router: Router) { 
     
@@ -55,23 +112,7 @@ export class PerfilComponent{
   });
 
 }
-user={
-  "usuario":'',
-  "email":'',
-  "nombre":'',
-  "apellidoPaterno":'',
-  "apellidoMaterno":'',
-  "calle":'',
-  "numExterior":'',
-  "numInterior":'',
-  "colonia":'',
-  "codigoPostal":'',
-  "municipio":'',
-  "estado":'',
-  "pais":'',
-  "telefono":'',
-  "password":''
-}
+
 
   // user={
   //   calle:'',

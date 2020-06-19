@@ -84,9 +84,9 @@ router.post('/new',async (req, res) =>{
     if( insertado)
     {
         if(params.sesion){ 
-            res.cookie( "UserId", id , { maxAge: 99999999, httpOnly: true });
+            res.cookie( "UserID", id , { maxAge: 99999999});
         }else{
-            res.cookie("UserId", id , {httpOnly: true });
+            res.cookie("UserID", id , { });
         }
 
        
@@ -135,7 +135,6 @@ router.get('/login',async (req, res) =>{
     var filter = {};
     filter.email = params.email;
 
-    console.log(req.query)
     if(!params.email && !params.password)
     {
         res.send("Debes cumplir con las características minimas de una cuenta");
@@ -154,9 +153,9 @@ router.get('/login',async (req, res) =>{
     if( (params.email == encontrado.email) && (params.password == encontrado.password) )
     {
         if(params.sesion){ 
-            res.cookie( "UserId", encontrado.id , { maxAge: 99999999, httpOnly: true });
+            res.cookie('UserID', encontrado.id , { maxAge: 99999999 });
         }else{
-            res.cookie("UserId", encontrado.id , {httpOnly: true });
+            res.cookie('UserID', encontrado.id , { });
         }
         res.send("Login Correcto");
     }else{
@@ -167,11 +166,18 @@ router.get('/login',async (req, res) =>{
     res.end();
 });
 
+router.get('/logOut',async (req, res) =>{
 
-router.get('/:usuario', async (req, res)=>{
+    res.clearCookie('UserID');
+
+    res.end();
+});
+
+
+router.get('/:id', async (req, res)=>{
     var required = req.params;
     var filter = {};
-    filter.usuario = required.usuario;
+    filter.id = required.id;
     var encontrados = await Cuentas.findOne(filter);
     res.send(encontrados);
     res.end();
