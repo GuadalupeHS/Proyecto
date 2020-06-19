@@ -49,6 +49,7 @@ export class NavbarComponent implements OnInit {
   busqueda = {
     nombre: ''
   };
+
   // user = {};
   user={
     "usuario":'',
@@ -67,7 +68,7 @@ export class NavbarComponent implements OnInit {
     "telefono":'',
     "password":''
   }
-  
+
   CurrentView;
   navCart = [];
   

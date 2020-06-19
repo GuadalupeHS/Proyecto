@@ -14,6 +14,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
+
 const routes: Routes = [
   { path: 'categorias', component: CategoriasComponent},
   { path: 'seccion', component: SeccionComponent},
@@ -25,7 +26,7 @@ const routes: Routes = [
   { path: 'secciones', component: SeccionComponent},
   { path: 'login', component: LoginComponent},
   { path: 'checkout', component: CheckoutComponent},
-  { path: 'perfil', component: PerfilComponent},
+  { path: 'perfil' : PerfilComponent},
   { path: '*', redirectTo:'/main', pathMatch: 'full'},
   { path: '**', component: MainComponent}
 
