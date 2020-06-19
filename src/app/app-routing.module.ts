@@ -14,7 +14,6 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
-
 const routes: Routes = [
   { path: 'categorias', component: CategoriasComponent},
   { path: 'seccion', component: SeccionComponent},

@@ -1,0 +1,125 @@
+.tarjeta {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    margin: 0.3rem;
+    background-color: wheat;
+}
+
+.tarjeta300 {
+    width: auto;
+    height: auto;
+    max-width: 300px;
+    background-color: wheat;
+    margin: 0.3rem;
+}
+
+.foto{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background-color: tan;
+}
+
+.center{
+    text-align: center;
+}
+
+.price{
+    font-weight: bold;
+    font-size: x-large;
+    padding: 0.5rem;
+}
+
+.price-horizontal{
+    font-weight: bold;
+    font-size: x-large;
+    padding: 0.7rem;
+}
+
+.verde{
+    background-color: #2e7d32 !important;
+}
+
+.rojo{
+    background-color: firebrick !important;
+}
+
+.amarillo{
+    background-color: #cabf45    !important    ;
+}
+.flex-center{
+    align-items: center;
+    flex: auto;
+}
+
+.area-boton{
+    width: 85%;
+    display: flex;
+    padding: 1rem;
+}
+
+.producto-nombre{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: medium;
+    margin: 1rem;
+}
+
+.texto{
+    padding: 0.2rem;
+}
+
+.inline{
+    display: inline;
+}
+
+.w100{
+    width: 100%;
+}
+
+.foto-horizontal{
+    align-self: flex-start;
+    width: 35%;
+}
+
+.foto-horizontal100{
+    align-self: flex-start;
+    width: 100%;
+}
+
+.inline-block{
+    display: inline-block;
+}
+
+.flex{
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-columna{
+    display: flex;
+    flex-direction: column;
+}
+
+.float{
+    float: left;
+    margin-right: 0.5rem;
+}
+
+.right{
+    float: right;
+}
+
+.flex-start{
+    align-self: flex-start;
+}
+
+.flex-end{
+    align-self: flex-end;
+}
+
+.boton-horizontal{
+    margin: 0.3rem;
+}
