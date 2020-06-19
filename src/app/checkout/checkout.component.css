@@ -68,6 +68,19 @@ html, body {
     text-align: center;
   }
   
+  .design1{
+    width: auto;
+    height: auto;
+    background-color: rgb(9, 237, 253);
+    border-radius: .2rem;
+  }
+  .design2{
+    width: auto;
+    height: 5rem;
+    background-color: rgb(98, 216, 108);
+    border-radius: .2rem;
+
+  }
 
 
 

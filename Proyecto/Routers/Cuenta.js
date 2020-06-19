@@ -217,6 +217,7 @@ router.put('/info', async (req, res)=>{
     var filter = {};
     filter.usuario =required.usuario;
     // console.log(req);
+  
     console.log(filter.usuario)
     var encontrados = await Cuentas.findOne(filter);
     if( !encontrados)
@@ -224,16 +225,12 @@ router.put('/info', async (req, res)=>{
         res.send( {error:'Esta cuenta no existe'});
         return;
     }
-    // var insertado = await Cuentas.bulkWrite([{
-    //     updateOne:{document :{usuario:req.body.usuario, email: req.body.email, nombre: req.body.nombre, apellidoPaterno:req.body.apellidoPaterno, apellidoMaterno:req.body.apellidoMaterno,
-    //          calle:req.body.calle, numExterior:req.body.numExterior, numInterior: req.body.numInterior, colonia:req.body.colonia,
-    //         codigoPostal:req.body.codigoPostal, municipio:req.body.municipio, estado:req.body.estado, pais:req.body.pais}}
-
-    // }]);
     var cuenta = req.query;
     cuenta.usuario = filter.usuario;
+    // console.log(cuenta)
     var insertado = await Cuentas.updateOne(filter, {$set: cuenta});
-    if( insertado)
+    // console.log(insertado)
+    if( !insertado)
     {
         res.send("Se actualizo correctamente ")
     }

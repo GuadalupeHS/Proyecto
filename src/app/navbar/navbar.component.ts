@@ -49,7 +49,24 @@ export class NavbarComponent implements OnInit {
   busqueda = {
     nombre: ''
   };
-  user = {};
+  // user = {};
+  user={
+    "usuario":'',
+    "email":'',
+    "nombre":'',
+    "apellidoPaterno":'',
+    "apellidoMaterno":'',
+    "calle":'',
+    "numExterior":'',
+    "numInterior":'',
+    "colonia":'',
+    "codigoPostal":'',
+    "municipio":'',
+    "estado":'',
+    "pais":'',
+    "telefono":'',
+    "password":''
+  }
   
   CurrentView;
   navCart = [];

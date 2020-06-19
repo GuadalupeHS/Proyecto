@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { fileURLToPath } from 'url';
 const VIEWOPT ={DatosP: 'DatosP', Editar:'Editar', AgregarDatos:'AgregarDatos'}
 //const VIEWOPT ={DatosP: 'DatosP', Editar:'Editar'}
 declare var $: any;
@@ -31,6 +32,8 @@ export class PerfilComponent implements OnInit{
     "telefono":'',
     "password":''
   }
+
+  // usuario='';
   ngOnInit(): void {
 
 
@@ -81,37 +84,38 @@ export class PerfilComponent implements OnInit{
   CurrentView;
   VIEWOPT=VIEWOPT;
 
-  cuentas = []; 
+//   cuentas = []; 
 
-  isLoadingCuentas = true;
-  usuario='';
-  SearchCuenta = function()
-  { 
-    var params ='?';
-    var numParams =0;
-    var self = this; 
-    if ( this.usuario != null)
-    {
-      params += ( numParams != 0 ? '&': '')+ 'usuario=' + this.usuario;
-      numParams++;
-    }
+//   isLoadingCuentas = true;
+ 
+//   SearchCuenta = function()
+//   {  
+  
+//     var params ='?';
+//     var numParams =0;
+//     var self = this; 
+//     if ( this.usuario != null)
+//     {
+//       params += ( numParams != 0 ? '&': '')+ 'usuario=' + this.usuario;
+//       numParams++;
+//     }
     
-    $.ajax ({
-      method: 'get',
-      url: 'http://localhost:777/cuenta/search' + params,
-      success: function(result){
-        self.cuentas=result;
-        self.isLoadingCuentas=false;
-      // alert ('Ok');
-    },
-    error:function (xhr, ajaxOptions, thrownError){
-      self.cuentas=[];
-      self.isLoadingCuentas=false;
-    // alert('error');
-    }
-  });
+//     $.ajax ({
+//       method: 'get',
+//       url: 'http://localhost:777/cuenta/search' + params,
+//       success: function(result){
+//         self.cuentas=result;
+//         self.isLoadingCuentas=false;
+//       // alert ('Ok');
+//     },
+//     error:function (xhr, ajaxOptions, thrownError){
+//       self.cuentas=[];
+//       self.isLoadingCuentas=false;
+//     // alert('error');
+//     }
+//   });
 
-}
+// }
 
 
   // user={
@@ -127,19 +131,25 @@ export class PerfilComponent implements OnInit{
   // }
   guardar=[];
   isLoadingUser = true;
+
  
   AddInfo = function () {
+   
     var params = '';
-    params += 'usuario=' + this.usuario+ '&';
+    params += 'usuario=' + this.user.usuario+ '&';
     params += 'calle=' + this.user.calle + '&';
     params += 'numExterior=' + this.user.numExterior + '&';
-    params += 'numInterior=' + this.user.numInterior + '&';
     params += 'colonia=' + this.user.colonia + '&';
     params += 'codigoPostal=' + this.user.codigoPostal + '&';
     params += 'municipio=' + this.user.municipio + '&';
     params += 'estado=' + this.user.estado + '&';
     params += 'pais=' + this.user.pais + '&';
     params += 'telefono=' + this.user.telefono;
+    if(!this.user.numInterior || this.user.numInterior === 0){
+      params += '&numInterior=0';
+    }else{
+      params += '&numInterior=' + this.user.numInterior;
+    }
     var self = this; 
     
     $.ajax ({
@@ -147,16 +157,11 @@ export class PerfilComponent implements OnInit{
       url: 'http://localhost:777/cuenta/info?' + params,
       success: function(result){
         self.guardar=result;
-        console.log(self.edits);
-        
-        self.isLoadingUser=false;
-      // alert ('Ok');
+        self.router.navigate(['/perfil'], {queryParams: {option:'DatosP'}});
     },
     error:function (xhr, ajaxOptions, thrownError){
       self.guardar=[];
       self.isLoadingUser=false;
-     
-     alert('error');
     }
     });
 
@@ -180,11 +185,12 @@ export class PerfilComponent implements OnInit{
   //   "telefono":'',
   //   "password":''
   // }
-  edits=[];
+  edits={};
  
   EditInfo = function () {
+  
     var params = '';
-    params += 'usuario=' + this.usuario+ '&';
+    params += 'usuario=' + this.user.usuario+ '&';
     params += 'email=' + this.user.email + '&';
     params += 'nombre=' + this.user.nombre + '&';
     params += 'apellidoPaterno=' + this.user.apellidoPaterno + '&';
@@ -200,19 +206,19 @@ export class PerfilComponent implements OnInit{
     params += 'telefono=' + this.user.telefono +'&';
     params += 'password=' + this.user.password;
     var self = this; 
-    
+    console.log(params);
     $.ajax ({
       method: 'put',
       url: 'http://localhost:777/cuenta/info?' + params,
       success: function(result){
         self.edits=result;
-        console.log(self.edits);
-        
         self.isLoadingUser=false;
+        self.router.navigate(['/perfil'], {queryParams: {option:'DatosP'}});
+
       // alert ('Ok');
     },
     error:function (xhr, ajaxOptions, thrownError){
-      self.edits=[];
+      self.edits={};
       self.isLoadingUser=false;
      
      alert('error');
