@@ -19,16 +19,17 @@
             <div class="info"><button type="button" class="btn btn-info" routerLink="/perfil" [queryParams]="{option:'Editar'}">Editar</button> </div>
         </div>
         <div  class="col-lg-8 bordes" >
-            <form  name="f1" class="margin2" [hidden]="option!==VIEWOPT.DatosP">
+
+            <form  name="f1" class="margin2" [hidden]="option!==VIEWOPT.DatosP" >
                 <h1>Datos Personales</h1>
-                <div class="col info"> Calle: {{cuenta.calle}}</div>
-                <div class="col info">Número Exterior: {{cuenta.numExterior}}</div>
-                <div class="col info">Número Interior: {{cuenta.numInterior}}</div>
-                <div class="col info">Código Postal: {{cuenta.codigoPostal}}</div>
-                <div class="col info">Colonia: {{cuenta.colonia}}</div>
-                <div class="col info">Municipio: {{cuenta.municipio}}</div>
-                <div class="col info">País: {{cuenta.pais}}</div>
-                <div class="col info">Teléfono: {{cuenta.telefono}}</div>
+                <div class="col info"> Calle: {{user.calle}}</div>
+                <div class="col info">Número Exterior: {{user.numExterior}}</div>
+                <div class="col info">Número Interior: {{user.numInterior}}</div>
+                <div class="col info">Código Postal: {{user.codigoPostal}}</div>
+                <div class="col info">Colonia: {{user.colonia}}</div>
+                <div class="col info">Municipio: {{user.municipio}}</div>
+                <div class="col info">País: {{user.pais}}</div>
+                <div class="col info">Teléfono: {{user.telefono}}</div>
                 <button  type="button" routerLink="/perfil" [queryParams]="{option:'AgregarDatos'}"   class="btn btn-primary">Agregar</button>
             </form>
             <!--Editar datos-->
