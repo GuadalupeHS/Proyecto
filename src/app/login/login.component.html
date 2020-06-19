@@ -18,7 +18,7 @@
                 <input type="password" id="password" placeholder="******" class="form-control" name="password" required  [(ngModel)] = "user.password" >
 
                 <span> 
-                <input type="checkbox" id="checkbox" style="margin-top: 1rem;"> Recordar mi usuario.
+                <input type="checkbox" id="checkbox" style="margin-top: 1rem;" (click)="sesion = !sesion;"> Recordar mi usuario.
                 <a routerLink="/register" style="margin-left: 9.5rem;"> ¿No tienes cuenta? ¡Registrate! </a>
                 </span>
                 <div class="alert alert-danger" role="alert" *ngIf="datosIncompletos">

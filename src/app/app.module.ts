@@ -10,7 +10,6 @@ import { SeccionComponent } from './seccion/seccion.component';
 import { NavbarSeccionesComponent } from './navbarSecciones/navbarSecciones.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { AdminComponent } from './admin/admin.component';
-import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
@@ -21,6 +20,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { EditInfoComponent } from './editinfo/editinfo.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 @NgModule({
@@ -34,7 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     routingComponents,
     CatalogoComponent,
     AdminComponent,
-    TarjetaComponent,
+    PerfilComponent,
     CategoriasComponent,
     MainComponent,
     LoginComponent,

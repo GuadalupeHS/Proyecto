@@ -61,7 +61,7 @@ export class LoginComponent {
     params += 'password=' + this.user.password;
 
     if(this.sesion){
-      params += '&session=true';
+      params += '&sesion=true';
     }
 
     var self = this;
@@ -90,5 +90,4 @@ export class LoginComponent {
     });
   }
   
-
 }

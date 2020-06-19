@@ -59,7 +59,6 @@ app.use('/pedido', endpointPedido);
 /*
 var  endpointStudent = require ('./Routers/Student');
 app.use('/student', endpointStudent);
-
 var  endpointTeacher = require ('./Routers/Teacher');
 app.use('/teacher', endpointTeacher);
 */

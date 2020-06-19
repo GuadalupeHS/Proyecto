@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 /*function getItems(carrito){
 
@@ -17,29 +16,53 @@ declare var $: any;
 
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) { 
+  constructor(private route: ActivatedRoute, private router: Router) { 
 
-    this.ruta = this.router.url;
+    router.events.subscribe((val) => {
 
-    
+      console.log("Running")
+      var cookies = this.GetCookies();
+      console.log(cookies);
+        if(!cookies['UserID']){
+          console.log("Nel");
+          return(null);
+        }
+
+        this.session.valid = true;
+
+        var self = this;
+
+        $.get({
+          url: 'http://localhost:777/cuenta/' + cookies['UserID'],
+          xhrFields: {
+            withCredentials: true
+          },
+          success: function (res) {
+            self.user = res;
+            console.log(self.user);
+          }
+        });
+    });
   }
 
   ruta;
   busqueda = {
     nombre: ''
   };
+  user = {};
   
   CurrentView;
   navCart = [];
   
   session = {
     valid: false,
-    user: 'skdfjsd'
+    user: ''
   };
 
   GetCookies = function()
   {
-    var cookies = document.cookie.split(';');
+    var cookies = document.cookie.split('; ');
+    console.log(cookies);
     var array = {};
     for( var i = 0; i < cookies.length; i++ )
     {
@@ -98,8 +121,7 @@ export class NavbarComponent implements OnInit {
     for(var i = 0; i<productos.length; i++){
       indices[productos[i]] = i;
     } 
-    console.log(indices)
-    console.log(productos);
+
     for(var i = 0; i<productos.length; i++){
   
       var self = this;
@@ -116,12 +138,27 @@ export class NavbarComponent implements OnInit {
           console.log("Error")
         }
       });
-  
     }
-
-    console.log(this.navCart);
-    
   }
 
+  logOut = function(){
+    
+    console.log("logging out")
+  
+      var self = this;
+      $.ajax({
+        method: 'get',
+        xhrFields: {
+          withCredentials: true
+        },
+        url: 'http://localhost:777/cuenta/logOut',
+        success: function (result){
+          window.location.reload();
+        },
+        error: function (){
+          console.log("Error")
+        }
+      });
+  }
   
 }
