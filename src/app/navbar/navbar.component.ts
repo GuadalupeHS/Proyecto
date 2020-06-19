@@ -50,7 +50,6 @@ export class NavbarComponent implements OnInit {
     nombre: ''
   };
 
-  // user = {};
   user={
     "usuario":'',
     "email":'',

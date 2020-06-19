@@ -31,8 +31,7 @@ export class PerfilComponent implements OnInit{
     "telefono":'',
     "password":''
   }
-
-  ngOnInit(): void {
+    ngOnInit(): void {
 
 
     var cookies = this.GetCookies();
@@ -116,7 +115,6 @@ export class PerfilComponent implements OnInit{
 // }
 
 }
-
   // user={
   //   calle:'',
   //   numExterior:'',

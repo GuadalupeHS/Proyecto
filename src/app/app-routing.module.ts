@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'secciones', component: SeccionComponent},
   { path: 'login', component: LoginComponent},
   { path: 'checkout', component: CheckoutComponent},
-  { path: 'perfil' : PerfilComponent},
+  { path: 'perfil', component: PerfilComponent},
   { path: '*', redirectTo:'/main', pathMatch: 'full'},
   { path: '**', component: MainComponent}
 
