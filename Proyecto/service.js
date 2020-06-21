@@ -17,7 +17,7 @@ app.use(CookieParser()); //Leer cookies a nivel servidor
 //Modificar el CORS para hacer que el servicio solo funcione con nuestra app (Evitar que servicios externos consuman esta app de carrito)
 app.use(cors({
     credentials: true, 
-    origin: 'http://localhost:4200'
+    origin: ['http://localhost:4200']
 }));
 
 const Carts = {}; //Variable servidor temporal de sesiones

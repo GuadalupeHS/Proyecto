@@ -1,5 +1,16 @@
 const express = require("express");
 const router = express.Router();
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, './../WonderPet/src/assets/catalogo/')
+    },
+    filename: function(req, file, cb){
+        cb(null, new Date().getTime() +'-'+ file.originalname);
+    }
+});
+const upload = multer({storage: storage});
 
 var Productos = require('../models/producto');
 const Utils =require('../Utils/utils')
@@ -109,6 +120,14 @@ router.get('/:id', async (req, res)=>{
     res.send(encontrados);
     res.end();
 });
+
+
+router.post('/upload', upload.single('image'), (req, res)=>{
+    var url = '../../assets/catalogo/'+req.file.filename;
+    res.send(url);
+});
+
+
 
 router.post('/:id', async (req, res)=>{
     var required = req.params;
