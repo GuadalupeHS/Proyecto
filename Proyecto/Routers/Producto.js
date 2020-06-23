@@ -15,6 +15,39 @@ const upload = multer({storage: storage});
 var Productos = require('../models/producto');
 const Utils =require('../Utils/utils')
 
+router.get('/search/admin', async (req, res) =>{
+    var parameters = req.query;
+
+    var encontrados;
+
+    console.log(parameters);
+    if(!parameters.id){
+        res.send({error: 'Error en su solicitud.'});
+    }else{
+        var filter ={};
+            
+        filter.idMarca = { $regex: Utils.ToRegex( parameters.id )};
+                
+        /*if(!parameters.orden){
+            encontrados = await Productos.find(nuevoFiltro).sort({nombre:1}); 
+        }else if(parameters.orden == 'nd'){
+            encontrados = await Productos.find(nuevoFiltro).sort({nombre:-1}); 
+        }else if(parameters.orden == 'pa'){
+            encontrados = await Productos.find(nuevoFiltro).sort({precio:1}); 
+        }else if(parameters.orden == 'pd'){
+            encontrados = await Productos.find(nuevoFiltro).sort({precio:-1}); 
+        }
+                 
+        if( nMax != null ) {
+            encontrados = await encontrados.limit( max );
+        }*/
+        encontrados = await Productos.find(filter).sort({id:1});       
+        res.send(encontrados);
+    }  
+       
+    res.end();
+})
+
 router.get('/search',async (req, res) =>{
     var parameters = req.query;
     var required = req.params;

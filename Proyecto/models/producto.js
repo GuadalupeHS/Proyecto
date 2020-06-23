@@ -9,5 +9,6 @@ module.exports = mongoose.model("Producto", new mongoose.Schema({
     seccion: String,
     categoria: String,
     para: String,
-    inventario: String
+    idMarca: String,
+    inventario: Number
 }), 'Productos')

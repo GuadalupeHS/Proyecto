@@ -56,7 +56,7 @@ export class PerfilComponent implements OnInit{
 
           },
           error: function (){
-            this.router.navigate(['/'], {});
+            self.router.navigate(['/'], {});
           }
         });
   }
