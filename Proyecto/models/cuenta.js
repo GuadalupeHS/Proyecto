@@ -24,6 +24,6 @@ mongoose.model( 'Cuenta', new mongoose.Schema({
     numTarjeta: Number,
     fechaExp: String,
     cvv: Number,
-    idProveedor:Number,
+    idProveedor: String,
     verificado: Boolean  //or null
 }), 'Cuentas');
