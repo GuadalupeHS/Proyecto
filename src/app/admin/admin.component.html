@@ -6,15 +6,15 @@
     <div class="dropdown-menu">
         <div class="form-group">
           <label for="nombre">Nombre del producto</label>
-          <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+          <input type="text" class="form-control" id="nombre" placeholder="Nombre" [(ngModel)]="productoNuevo.nombre">
         </div>
         <div class="form-group">
           <label for="descripcion">Descripción del producto</label>
-          <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+          <textarea rows="3" class="form-control" placeholder="Descripcion" [(ngModel)]="productoNuevo.descripcion"></textarea>
         </div>
         <div class="form-group">
           <label for="precio">Precio del producto</label>
-          <input type="number" class="form-control" id="precio" placeholder="$">
+          <input type="number" class="form-control" id="precio" placeholder="$" [(ngModel)]="productoNuevo.precio">
         </div>
         <div class="form-group">
           <input
@@ -23,25 +23,36 @@
             #fileInput>
           <button (click)="fileInput.click()">Imagen</button>
           <span *ngIf=selectedFile>{{selectedFile.name}}</span>
-          <button (click)="onUpload()">Upload!</button>
+        </div>
+
+        <div class="form-group">
+          <label>Departamento: </label>
+          <select name="departamentos" size="4" >
+            <option value="Comida" (click)="productoNuevo.categoria= 'Comida';">Comida</option>
+            <option value="Limpieza" (click)="productoNuevo.categoria= 'Limpieza';">Limpieza</option>
+            <option value="Accesorios" (click)="productoNuevo.categoria= 'Accesorios';">Accesorios</option>
+            <option value="Juguetes" (click)="productoNuevo.categoria= 'Juguetes';">Juguetes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Para: </label>
+          <select name="seccion" size="6">
+            <option value="Perros" (click)="productoNuevo.seccion='Perros';">Perros</option>
+            <option value="Gatos" (click)="productoNuevo.seccion='Gatos';">Gatos</option>
+            <option value="Mamiferos" (click)="productoNuevo.seccion='Mamiferos';">Mamiferos</option>
+            <option value="Aves" (click)="productoNuevo.seccion='Aves';">Aves</option>
+            <option value="Reptiles" (click)="productoNuevo.seccion='Reptiles';">Reptiles</option>
+            <option value="Peces" (click)="productoNuevo.seccion='Peces';">Peces</option>
+          </select>
         </div>
         
-        <button class="btn btn-primary">Agregar</button>
-      </div>
-    
-
-
-    <label for="departamentos">Departamentos:</label>
-    <div id="departamentos" class=" p-2 dropdown inline-block">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button">Action</button>
-          <button class="dropdown-item" type="button">Another action</button>
-          <button class="dropdown-item" type="button">Something else here</button>
+        <div class="alert alert-danger" role="alert" *ngIf="datosIncompletos">
+          Por favor introduzca la información de todos los campos.
         </div>
-      </div>
+
+        <button class="btn btn-primary" (click)="agregarProducto()">Agregar</button>
+
+    </div>
 
       <div class="mdc-data-table block">
         <table class="mdc-data-table__table" aria-label="Dessert calories">
@@ -62,29 +73,92 @@
               <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{producto.nombre}}</td>
               <td class="mdc-data-table__cell">
 
+              <div class="inline">
                 <button class="mdc-button mdc-button--raised blanco texto-verde" data-toggle="dropdown"> 
-                    <i class="material-icons mdc-icon-button__icon">visibility</i>
-                    <span class="mdc-button__ripple"></span> Ver
+                  <i class="material-icons mdc-icon-button__icon">visibility</i>
+                  <span class="mdc-button__ripple"></span> Ver
                 </button>
-                <div class="dropdown-menu p-4" style="height: auto; max-width: 30rem;">
-                   
-                  <h5 class="modal-title" id="exampleModalLabel">{{producto.nombre}}</h5>
-                  <span class="mdc-typography mdc-typography--body2 price">${{producto.precio}}</span>
-                  <img class="imagenTabla" src="{{producto.imagenLink}}" alt="">
+               <div class="dropdown-menu p-4" style="height: auto; max-width: 30rem;">
+                 
+                <h5 class="modal-title" id="exampleModalLabel">{{producto.nombre}}</h5>
+                <span class="mdc-typography mdc-typography--body2 price">${{producto.precio}}</span>
+                <img class="imagenTabla" src="{{producto.imagenLink}}" alt="">
+                
+                <span class="texto">{{producto.descripcion}}</span>
                   
-                  <span class="texto">{{producto.descripcion}}</span>
-                    
                 </div>
+              </div>
 
-                <button class="mdc-button mdc-button--raised blanco texto-azul">               
-                    <i class="material-icons mdc-icon-button__icon">edit</i>
-                    <span class="mdc-button__ripple"></span> Editar
+              <div class="inline">
+                <button class="mdc-button mdc-button--raised blanco texto-azul" data-toggle="dropdown">               
+                  <i class="material-icons mdc-icon-button__icon">edit</i>
+                  <span class="mdc-button__ripple"></span> Editar
                 </button>
+                <div class="dropdown-menu">
+                  <div class="form-group">
+                    <label for="nombre">Nombre del producto</label>
+                    <input type="text" class="form-control" placeholder="Nombre" value="{{producto.nombre}}" (input)="productoAux.nombre = $event.target.value;">
+                  </div>
+                  <div class="form-group">
+                    <label for="descripcion">Descripción del producto</label>
+                    <textarea rows="3" class="form-control" placeholder="Descripcion" value="{{producto.descripcion}}" (input)="productoAux.descripcion = $event.target.value;"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="precio">Precio del producto</label>
+                    <input type="number" class="form-control" placeholder="$" value="{{producto.precio}}" (input)="productoAux.precio = $event.target.value;">
+                  </div>
+                  <div class="form-group">
+                    <label>Departamento: </label>
+                    <select name="departamentos" size="4" >
+                      <option value="Comida" [selected]="producto.categoria === 'Comida'" (click)="productoAux.categoria= 'Comida';">Comida</option>
+                      <option value="Limpieza" [selected]="producto.categoria === 'Limpieza'" (click)="productoAux.categoria= 'Limpieza';">Limpieza</option>
+                      <option value="Accesorios" [selected]="producto.categoria === 'Accesorios'" (click)="productoAux.categoria= 'Accesorios';">Accesorios</option>
+                      <option value="Juguetes" [selected]="producto.categoria === 'Juguetes'" (click)="productoAux.categoria= 'Juguetes';">Juguetes</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Para: </label>
+                    <select name="seccion" size="6">
+                      <option value="Perros" [selected]="producto.seccion === 'Perros'" (click)="productoAux.seccion='Perros';">Perros</option>
+                      <option value="Gatos" [selected]="producto.seccion === 'Gatos'" (click)="productoAux.seccion='Gatos';">Gatos</option>
+                      <option value="Mamiferos" [selected]="producto.seccion === 'Mamiferos'" (click)="productoAux.seccion='Mamiferos';">Mamiferos</option>
+                      <option value="Aves" [selected]="producto.seccion === 'Aves'" (click)="productoAux.seccion='Aves';">Aves</option>
+                      <option value="Reptiles" [selected]="producto.seccion === 'Reptiles'" (click)="productoAux.seccion='Reptiles';">Reptiles</option>
+                      <option value="Peces" [selected]="producto.seccion === 'Peces'" (click)="productoAux.seccion='Peces';">Peces</option>
+                    </select>
+                  </div>
+                
+                  <div class="form-group">
+                    <input
+                      style="display: none"
+                      type="file" (change)="onFileChanged($event)"
+                      #fileInput>
+                    <button (click)="fileInput.click()">Imagen</button>
+                    <span *ngIf="selectedFile; else elseBlock">{{selectedFile.name}}</span>
+                    <ng-template #elseBlock>Foto sin cambios</ng-template>
+                  </div>
+                
+                  <button class="btn btn-primary" (click)="actualizarProducto(producto.nombre, producto.descripcion, producto.precio, producto.categoria, producto.seccion, producto.imagenLink, producto.id)">Agregar</button>
+                  <button type="button" class="btn btn-secondary right">Cerrar</button>
 
-                <button class="mdc-button mdc-button--raised blanco texto-rojo">               
+                </div>
+              </div>
+
+
+              <div class="inline">
+                <button class="mdc-button mdc-button--raised blanco texto-rojo" data-toggle="dropdown">               
                     <i class="material-icons mdc-icon-button__icon">delete</i>
                     <span class="mdc-button__ripple"></span> Eliminar
                 </button>
+                <div class="dropdown-menu">
+                  <label for="">¿Está seguro que desea eliminar este producto? <br>({{producto.nombre}})<br></label>
+                  <div class="form-group">
+                    <button class="btn btn-danger" (click)="eliminarProducto(producto.id)">Sí</button>
+                  <button type="button" class="btn btn-secondary right">No</button>
+                  </div>
+
+                </div>
+              </div>
 
               </td>
             </tr>

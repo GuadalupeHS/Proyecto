@@ -154,3 +154,7 @@ label{
     overflow: auto;
 }
 
+.dropdown-submenu {
+    position: relative;
+}
+

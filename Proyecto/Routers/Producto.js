@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const multer = require('multer');
+const fs = require('fs');
+
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, './../WonderPet/src/assets/catalogo/')
+        cb(null, './../WonderPet/src/images/catalogo/')
     },
     filename: function(req, file, cb){
         cb(null, new Date().getTime() +'-'+ file.originalname);
@@ -156,46 +158,59 @@ router.get('/:id', async (req, res)=>{
 
 
 router.post('/upload', upload.single('image'), (req, res)=>{
-    var url = '../../assets/catalogo/'+req.file.filename;
+    var url = '../../images/catalogo/'+req.file.filename;
     res.send(url);
+    res.end();
 });
 
+router.post('/new', async (req, res)=>{
+    var params = req.query;
 
-
-router.post('/:id', async (req, res)=>{
-    var required = req.params;
-    var filter = {};
-    filter.id =parseInt(required.id);
-    var encontrados = await Productos.findOne(filter);
-    if( encontrados)
+    if(!params.nombre || !params.seccion || !params.categoria 
+        || !params.precio || !params.descripcion || !params.imagenLink
+        || !params.idMarca)
     {
-        res.send( {error:'Este producto ya existe con el id: ' + required.id + ' Esta dado de alta a nombre: ' + encontrados.nombre});
-        return;
-    } 
-    var producto = req.body;
-    producto.id = filter.id;
-    if(!producto.nombre || !producto.seccion || !producto.categoria || !producto.precio || !producto.descripcion)
-    {
-        res.send("Debes cumplir con las características minimas de un alumno");
+        console.log(params);
+        res.send({error:'Faltan campos al agregar producto'});
         return;
     }
-    // var insertado = await Productos.insertOne(producto);
-    var insertado = await Productos.bulkWrite([{
-        insertOne:{document :{id:req.body.id, nombre: req.body.nombre, precio: req.body.precio, imagenLink:req.body.imagenLink, descripcion:req.body.descripcion,
-             seccion:req.body.seccion, categoria:req.body.categoria, para: req.body.para, inventario:req.body.inventario}}
+    var encontrados = await Productos.find(); 
+    params.id = encontrados.length+1;
 
-    }]);
- 
-    if( insertado)
+    var insertado = await Productos.create(params);
+
+    if(insertado)
     {
-        res.send("se inserto correctamente ")
+        res.send("Se inserto correctamente ")
+        var fileContent = "AuxFile";
+        var filepath = "./../WonderPet/src/images/catalogo/aux.jpg";
+        fs.writeFile(filepath, fileContent, (err) => {
+            if (err) throw err;
+            console.log("The file was succesfully saved!");
+        });
+
+        fs.unlink("./../WonderPet/src/images/catalogo/aux.jpg", (err) => {
+            if(err){
+                console.error(err);
+                return;
+            }
+        });
     }
     else
     {
-        res.send("Error");
+        res.send({error:'Error al agregar producto'});
     }
+
+    
     res.end();
 });
+
+router.put('/upload', upload.single('image'), (req, res)=>{
+    var url = '../../images/catalogo/'+req.file.filename;
+    res.send(url);
+    res.end();
+});
+
 
 router.put('/:id', async (req, res)=>{
     var required = req.params;
@@ -207,7 +222,7 @@ router.put('/:id', async (req, res)=>{
         res.send( {error:'Este producto no existe'});
         return;
     }
-    var producto = req.body;
+    var producto =  req.query;
     producto.id = filter.id;
     var insertado = await Productos.updateOne(filter, {$set: producto});
     if( insertado)
@@ -221,6 +236,29 @@ router.put('/:id', async (req, res)=>{
     res.end();
 
 });
+
+router.delete('/upload', async (req, res)=>{
+    var required = req.params;
+    var parameters = req.query;
+
+    if(!parameters.link){
+        res.send( {error:'Error en su solicitud'});
+        return;
+    }
+    var link = parameters.link.split('/')
+    var path = './../WonderPet/src/images/catalogo/' + link[4];
+
+    fs.unlink(path, (err) => {
+        if(err){
+            console.error(err);
+            return;
+        }
+    });
+    console.log("done")
+    res.send("Se eliminó correctamente ")
+
+});
+
 router.delete('/:id', async (req, res)=>{
     var required = req.params;
     var filter = {};
@@ -231,6 +269,15 @@ router.delete('/:id', async (req, res)=>{
         res.send( {error:"Este producto no existe"});
         return;
     } 
+    var link = encontrados.imagenLink.split('/')
+    var path = './../WonderPet/src/images/catalogo/' + link[4];
+
+    fs.unlink(path, (err) => {
+        if(err){
+            console.error(err);
+            return;
+        }
+    });
     
     var insertado = await Productos.deleteOne(filter);
     if( insertado)
