@@ -13,7 +13,7 @@ export class CatalogoComponent {
   productos = [];
   nombre;
   textoPrecios = 'Todo';
-  textoOrden = 'Ordenar por...';
+  textoOrden = 'Ordenar por';
   filtros = {
     nombre: '',
     departamento: '',

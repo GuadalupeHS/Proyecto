@@ -1,3 +1,44 @@
+.portada{
+    width: 100%;
+    height: auto;
+    padding: 0; 
+    margin: 0;
+    border-radius: 0.5rem;
+    margin-top: 1rem;   
+    margin-bottom: 1rem;
+}
+
+.imagen{
+    width: 12rem;
+    height: 12rem;
+ }
+
+ .titulo{
+    font-size: 7vw;
+    padding: 0;
+    margin-left: 2rem;
+    margin-top: 3rem;
+    text-align: left;
+    color: aliceblue;
+}
+
+.btn{
+    font-size: 1.5rem;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .headerimg{
     width: 5rem;
     height: 5rem;
@@ -11,6 +52,12 @@
    font-size: 3rem;
    margin-top: 1.5rem;
 }
+.newtitle{
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 
 
@@ -22,9 +69,7 @@
     height: auto;
 }
 
-.mar{
-    margin: 2rem;
-}
+
 
 .tam{
     font-size: 1.5rem;
@@ -83,14 +128,8 @@
     100%{ margin-left: -300%;}
 }
 .petsize{
-    width: 5rem;
-    height: 5rem;
-    border: .1 solid black;
-    height: auto;
-    position: inherit;
-    margin: auto;
-    padding: 0;
-    padding-left: 0;
+    width: 8rem;
+    height: 8rem;
 }
 .petboton{
     width: 10rem;
@@ -119,6 +158,8 @@
     padding: 0;
     text-align: center;
     margin: 1rem;
+    color: white;
+    border-radius: 0.5rem;
 }
 /*Responsive*/
 
@@ -134,4 +175,11 @@
     padding: 0px;
 }
 
+
+.yellow{background-color: yellow;}
+.green{background-color: greenyellow;}
+.orange{background-color: orange;}
+.red{background-color: lightcoral;}
+.blue{background-color:lightskyblue;}
+.purple{background-color: plum;}
 

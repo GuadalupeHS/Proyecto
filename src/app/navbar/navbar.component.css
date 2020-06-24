@@ -55,12 +55,14 @@ html, body {
   font-family: 'Cabin', sans-serif;
 }
 
-.form-control{
-  margin-left: 8rem;
-  width: 30rem;
-}
+
 .tcenter{
   text-align: center;
 }
+
+.btn-outline-info{
+  border: hidden;
+}
+
 
 

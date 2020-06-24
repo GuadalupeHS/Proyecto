@@ -2,11 +2,9 @@
 
     <!-- INICIO TITULO DE LAS SECCIONES-->
     <div [hidden]="seccion !== VIEWS.Comida">
-        <header class="row bg-dark" style="margin-bottom: 1rem; margin-top: 0.5rem;">
-            <!-- IMAGEN -->
-            <div class="col-lg-5"><img src="../../assets/sections/pet-food.png" class="headerimg"></div>
-            <!-- TITULO DE LA SECCION-->
-            <div class="col-lg-7"> <h1 class="headertitulo">ALIMENTO</h1> </div>
+        <header class="portada row bg-dark">
+            <div class="col-5 d-flex flex-row-reverse"><img class="img-fluid" alt="Gatos" src="../../assets/sections/pet-food.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo"> Alimento </h1></div>
         </header>
 
         <div>
@@ -18,11 +16,9 @@
 
 
     <div [hidden]="seccion !== VIEWS.Limpieza">
-        <header class="row bg-dark" style="margin-bottom: 1rem; margin-top: 0.5rem;">
-            <!-- IMAGEN -->
-            <div class="col-lg-5"><img src="../../assets/sections/clean.png" class="headerimg"></div>
-            <!-- TITULO DE LA SECCION-->
-            <div class="col-lg-7"> <h1 class="headertitulo">LIMPIEZA</h1> </div>
+        <header class="portada row bg-dark">
+            <div class="col-5 d-flex flex-row-reverse"><img class="img-fluid" alt="Gatos" src="../../assets/sections/clean.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo"> Limpieza </h1></div>
         </header>
         <div>
             <span> 
@@ -35,11 +31,9 @@
 
 
     <div [hidden]="seccion !== VIEWS.Juguetes">
-        <header class="row bg-dark" style="margin-bottom: 1rem; margin-top: 0.5rem;">
-            <!-- IMAGEN -->
-            <div class="col-lg-5"><img src="../../assets/sections/toys.png" class="headerimg"></div>
-            <!-- TITULO DE LA SECCION-->
-            <div class="col-lg-7"> <h1 class="headertitulo">JUGUETES</h1> </div>
+        <header class="portada row bg-dark">
+            <div class="col-5 d-flex flex-row-reverse"><img class="img-fluid" alt="Gatos" src="../../assets/sections/toys.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo"> Juguetes  </h1></div>
         </header>
         <div>
             <span> 
@@ -48,11 +42,9 @@
         </div>
     </div>
     <div [hidden]="seccion !== VIEWS.Accesorios">
-        <header class="row bg-dark" style="margin-bottom: 1rem; margin-top: 0.5rem;">
-            <!-- IMAGEN -->
-            <div class="col-lg-5"><img src="../../assets/sections/accesories.png" class="headerimg"></div>
-            <!-- TITULO DE LA SECCION-->
-            <div class="col-lg-7"> <h1 class="headertitulo">ACCESORIOS</h1> </div>
+        <header class="portada row bg-dark">
+            <div class="col-5 d-flex flex-row-reverse"><img class="img-fluid" alt="Gatos" src="../../assets/sections/accesories.png" alt="" class="imagen"></div>
+            <div class="col-7"><h1 class="titulo"> Accesorios </h1></div>
         </header>
         <div>
             <span> 
@@ -65,10 +57,10 @@
 
     <section class="row margin0 height-auto padding10"> 
     
-        <aside class="col-lg-2 lado content borde-negro">
-                <div class="row">
-                    <div class="col-12 tam">Productos más vendidos</div>
-                </div>
+        <aside class="col-lg-2 lado content">
+            <div class="row bg-info" style="height: 20%; border-radius: 0.5rem; margin-right: 0.5rem; margin-left: 1rem; margin-top: 1rem;" >
+                <div class="col-12 newtitle"> ¡Mas Vendidos! </div>
+            </div>
                 <div class="row">
                     <div class="contenedor">
                         <ul>
@@ -80,50 +72,50 @@
                     </div>
                 </div>
         </aside>
-        <section class="borde-negro col-lg-10 areacat padding0 px-2">
+        <section class="col-lg-10 bg-light" style="border-radius: 1rem;">
             <div class="row mar">
-                <div class="col-12 titulo2">Mascotas</div>
+                <div class="col-12 titulo2 bg-dark">Mascotas</div>
             </div>
             <div class="row mar height-auto">
-                <div class="col-6 col-md-4 col-lg-3">
-                    <img class=" petsize" src="../../assets/images/dog.png" >
-                </div>
-                <div class="col-6 col-md-4 col-lg-3" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Perros'}">
-                    <div class="petboton petsnames">Perros</div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <img class=" petsize" src="../../assets/images/cat.png" >
-                </div>
-                <div class="col-6 col-md-4 col-lg-3" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Gatos'}">
-                    <div class="petboton petsnames">Gatos</div>
-                </div>
-            </div>
-            <div class="row mar height-auto">
-                <div class="col-6 col-md-4 col-lg-3">
-                    <img class=" petsize" src="../../assets/images/hamster.png" >
-                </div>
-                <div class="col-6 col-md-4 col-lg-3" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Mamiferos'}">
-                    <div class="petboton petsnames">Mamíferos</div>
+                <div class="col-6 col-md-4 col-lg-3 d-flex justify-content-center">
+                    <img class=" petsize" src="../../assets/main/dog.png" >
                 </div>
                 <div class="col-6 col-md-4 col-lg-3" >
-                    <img class=" petsize" src="../../assets/images/pajaro.png" >
+                    <button type="button" class="btn yellow" style="width: 100%; height: 70%;" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Perros'}"> Perros </button>
                 </div>
-                <div class="col-6 col-md-4 col-lg-3" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Aves'}">
-                    <div class="petboton petsnames">Aves</div>
+                <div class="col-6 col-md-4 col-lg-3 d-flex justify-content-center">
+                    <img class=" petsize" src="../../assets/main/cat.png" >
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <button type="button" class="btn green" style="width: 100%; height: 70%;" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Gatos'}"> Gatos </button>
                 </div>
             </div>
             <div class="row mar height-auto">
-                <div class="col-6 col-md-4 col-lg-3">
-                    <img class=" petsize" src="../../assets/images/lagarto.png" >
+                <div class="col-6 col-md-4 col-lg-3 d-flex justify-content-center">
+                    <img class=" petsize" src="../../assets/main/hamster.png" >
                 </div>
-                <div class="col-6 col-md-4 col-lg-3" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Reptiles'}">
-                    <div class="petboton petsnames">Reptiles</div>
+                <div class="col-6 col-md-4 col-lg-3" >
+                    <button type="button" class="btn red" style="width: 100%; height: 70%;" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Mamiferos'}"> Mamíferos </button>
                 </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <img class=" petsize" src="../../assets/images/peces.png" >
+                <div class="col-6 col-md-4 col-lg-3 d-flex justify-content-center" >
+                    <img class=" petsize" src="../../assets/main/parrot.png" >
                 </div>
-                <div class="col-6 col-md-4 col-lg-3" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Peces'}">
-                    <div class="petboton petsnames">Peces</div>
+                <div class="col-6 col-md-4 col-lg-3" >
+                    <button type="button" class="btn blue" style="width: 100%; height: 70%;" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Aves'}"> Aves </button>
+                </div>
+            </div>
+            <div class="row mar height-auto">
+                <div class="col-6 col-md-4 col-lg-3 d-flex justify-content-center">
+                    <img class=" petsize" src="../../assets/main/chameleon.png" >
+                </div>
+                <div class="col-6 col-md-4 col-lg-3" >
+                    <button type="button" class="btn orange" style="width: 100%; height: 70%;" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Reptiles'}"> Reptiles </button>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 d-flex justify-content-center">
+                    <img class=" petsize" src="../../assets/main/fish.png" >
+                </div>
+                <div class="col-6 col-md-4 col-lg-3" >
+                    <button type="button" class="btn purple" style="width: 100%; height: 70%;" routerLink="/catalogo" [queryParams]="{departamento:seccion, mascota: 'Peces'}"> Peces </button>
                 </div>
             </div>
     

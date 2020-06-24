@@ -8,7 +8,7 @@ html, body {
     box-sizing: border-box; 
   }
 
-.bordes{
+.border{
     border: 1px solid black;
 }
 
@@ -17,7 +17,7 @@ html, body {
     height: 10rem;
     padding: 0;
     margin: 0;
-    border: 1px solid blueviolet;
+    
     position: relative;
 }
 .imagen{
@@ -30,10 +30,7 @@ html, body {
     padding: 0;
     margin-top: 1rem;
 }
-.fondo{
-    border-radius: .3rem;
-    background-color: rgb(57, 167, 218);
-}
+
 .margin{
     margin-top: 1rem;
 }
