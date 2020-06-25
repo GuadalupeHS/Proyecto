@@ -22,7 +22,6 @@ export class NavbarComponent implements OnInit {
 
       console.log("Running")
       var cookies = this.GetCookies();
-      console.log(cookies);
         if(!cookies['UserID']){
           console.log("Nel");
           return(null);
@@ -39,7 +38,6 @@ export class NavbarComponent implements OnInit {
           },
           success: function (res) {
             self.user = res;
-            console.log(self.user);
           }
         });
     });
@@ -79,7 +77,6 @@ export class NavbarComponent implements OnInit {
   GetCookies = function()
   {
     var cookies = document.cookie.split('; ');
-    console.log(cookies);
     var array = {};
     for( var i = 0; i < cookies.length; i++ )
     {

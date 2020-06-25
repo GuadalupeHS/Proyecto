@@ -104,9 +104,9 @@ router.post('/order', async (req, res)=>{
 
     // }]);
  
-    if( !insertado)
+    if(insertado)
     {
-        res.send("se inserto correctamente ")
+        res.send(pedido.idPedido)
     }
     else
     {

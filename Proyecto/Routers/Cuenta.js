@@ -227,10 +227,10 @@ router.put('/info', async (req, res)=>{
     }
     var cuenta = req.query;
     cuenta.usuario = filter.usuario;
-    // console.log(cuenta)
+    console.log(cuenta)
     var insertado = await Cuentas.updateOne(filter, {$set: cuenta});
-    // console.log(insertado)
-    if( !insertado)
+    console.log(insertado)
+    if(insertado)
     {
         res.send("Se actualizo correctamente ")
     }

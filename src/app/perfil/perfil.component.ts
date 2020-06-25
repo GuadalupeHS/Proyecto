@@ -151,12 +151,13 @@ export class PerfilComponent implements OnInit{
       params += '&numInterior=' + this.user.numInterior;
     }
     var self = this; 
-    
+    console.log(params);
     $.ajax ({
       method: 'put',
       url: 'http://localhost:777/cuenta/info?' + params,
       success: function(result){
         self.guardar=result;
+        console.log(result);
         self.router.navigate(['/perfil'], {queryParams: {option:'DatosP'}});
     },
     error:function (xhr, ajaxOptions, thrownError){
