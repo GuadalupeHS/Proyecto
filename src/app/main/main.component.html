@@ -1,0 +1,99 @@
+<!-- SLIDER -->
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../../assets/main/image1.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <button class="btn btn-primary bp"> Comprar Ahora  </button>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../../assets/main/image2.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <button class="btn btn-success bp"> Comprar Ahora  </button>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../../assets/main/image3.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <button class="btn btn-danger bp" style="width: 10rem;"> Comprar Ahora </button>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+  <!-- FIN SLIDER -->
+
+
+  <!-- LOS MAS VENDIDOS -->
+
+
+<!-- MASCOTAS -->
+<div class="container">
+  <p class="headerPets"> Comprar por Mascotas </p>
+  <div class="row">
+
+    <div class="col-lg-2">
+
+    <div class="cpet yellow">
+        <img src="../../assets/main/dog.png" style="width: 8rem; height: 8rem; margin-top: 1rem;">
+        <button type="button" routerLink="/categorias" [queryParams]="{mascota: 'Perros'}" class="btn btn-dark" style="width: 100%; margin-top: 1rem;">Perros</button>
+    </div>
+
+    </div>
+
+    <div class="col-lg-2">
+    <div class="cpet green">
+      <img src="../../assets/main/cat.png" style="width: 8rem; height: 8rem; margin-top: 1rem;">
+      <button type="button" routerLink="/categorias" [queryParams]="{mascota: 'Gatos'}" class="btn btn-dark" style="width: 100%; margin-top: 1rem;">Gatos</button>
+  </div>
+    </div>
+
+    <div class="col-lg-2">
+      
+    <div class="cpet orange">
+      <img src="../../assets/main/chameleon.png" style="width: 8rem; height: 8rem; margin-top: 1rem;">
+      <button type="button" routerLink="/categorias" [queryParams]="{mascota: 'Reptiles'}"  class="btn btn-dark" style="width: 100%; margin-top: 1rem;">Réptiles</button>
+  </div>
+  
+    </div>
+
+
+    <div class="col-lg-2">
+     
+    <div class="cpet red">
+      <img src="../../assets/main/hamster.png" style="width: 8rem; height: 8rem; margin-top: 1rem;">
+      <button type="button" routerLink="/categorias" [queryParams]="{mascota: 'Mamiferos'}" class="btn btn-dark" style="width: 100%; margin-top: 1rem;">Mamíferos</button>
+  </div>
+    </div>
+    <div class="col-lg-2">
+      
+    <div class="cpet blue">
+      <img src="../../assets/main/parrot.png" style="width: 8rem; height: 8rem; margin-top: 1rem;">
+      <button type="button" routerLink="/categorias" [queryParams]="{mascota: 'Aves'}" class="btn btn-dark" style="width: 100%; margin-top: 1rem;">Aves</button>
+  </div>
+    </div>
+    <div class="col-lg-2">
+    
+      <div class="cpet purple">
+        <img src="../../assets/main/fish.png" style="width: 8rem; height: 8rem; margin-top: 1rem;">
+        <button type="button" routerLink="/categorias" [queryParams]="{mascota: 'Peces'}" class="btn btn-dark" style="width: 100%; margin-top: 1rem;">Peces</button>
+    </div>
+    </div>
+
+
+  </div>
+</div>
+

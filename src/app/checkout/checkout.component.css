@@ -1,0 +1,238 @@
+html, body {
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 100%; 
+  }
+  * {
+    box-sizing: border-box; 
+  }
+  
+  
+.price{
+    font-weight: bold;
+    font-size: x-large;
+    padding: 0.5rem;
+}
+  
+  
+  .padleft {
+    padding-left: 25rem;
+  }
+  
+  .tarjeta300 {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    background-color: rgb(134, 226, 233);
+    margin: 0.3rem;
+  }
+  
+  .foto{
+    align-self: flex-start;
+    max-width: 30%;
+    display: inline;
+  }
+  
+  .blanco{
+    background-color: white !important;
+  }
+  
+  .texto-rojo{
+    color: red !important;
+  }
+  
+  .area-boton{
+    width: 100%;
+    align-self: center;
+  }
+  
+  .flex-center{
+    align-items: center;
+    flex: auto;
+  }
+  
+  .w100{
+    width: 100%;
+  }
+  
+  .brand-font{
+    font-family: 'Cabin', sans-serif;
+  }
+  
+  .form-control{
+    margin-left: 8rem;
+    width: 30rem;
+  }
+  .tcenter{
+    text-align: center;
+  }
+  
+  .design1{
+    width: auto;
+    height: auto;
+    background-color: rgb(41, 203, 243);
+    border-radius: .2rem;
+  }
+  .design2{
+    width: auto;
+    height: 15rem;
+    background-color: #97ebee;
+    border-radius: .2rem;
+
+  }
+  
+
+
+
+
+.headerimg{
+    width: 5rem;
+    height: 5rem;
+    margin-left: 23rem; 
+    margin-top: 0.5rem; 
+    margin-bottom: 0.5rem;
+}
+.headertitulo{
+   color: white;
+   font-family: 'Cabin', sans-serif;
+   font-size: 3rem;
+   margin-top: 1.5rem;
+}
+
+
+
+
+
+
+.lado{
+    padding: 0;
+    height: auto;
+}
+
+.mar{
+    margin: 2rem;
+}
+
+.tam{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+
+
+
+/*Lo mas vendido*/
+.contenedor{
+    width: 100px;
+    margin:auto;
+    overflow: hidden;
+    margin-top: 3rem;
+}
+.contenedor ul{
+    padding: 0;
+    width: 400px;
+    display: flex;
+    animation: slide  20s infinite alternate;
+}
+
+.contenedor ul:hover{
+    animation-play-state: paused;
+    cursor: pointer;
+}
+.contenedor li{
+    width:100% ;
+    list-style: none;
+}
+
+.contenedor img{
+    width: 100%;
+    height: 100%;
+
+}
+
+.borde-negro{
+    border: .1rem solid black;
+    margin-bottom: 1rem;
+}
+
+
+@keyframes slide{
+    0% { margin-left: 0%;}
+    20% { margin-left: 0%;}
+
+    25% { margin-left: -100%;}
+    45%{ margin-left: -100%;}
+
+    50%{ margin-left: -200%;}
+    70%{ margin-left: -200%;}
+
+    75%{ margin-left:-300%;}
+    100%{ margin-left: -300%;}
+}
+.petsize{
+    width: 5rem;
+    height: 5rem;
+    border: .1 solid black;
+    height: auto;
+    position: inherit;
+    margin: auto;
+    padding: 0;
+    padding-left: 0;
+}
+.petboton{
+    width: 10rem;
+    height: 3rem;
+    border-radius: 1rem;
+    border: .1rem solid black;
+    position: inherit;
+    margin: auto;
+    margin-right: 0;
+    padding: 0;
+    
+}
+.petsnames{
+    font-size: 2rem;
+    padding: 0;
+    text-align: center;  
+    position: absolute;
+}
+
+.areacat{
+    height: 90%;
+
+}
+.titulo2{
+    font-size: 3rem;
+    padding: 0;
+    text-align: center;
+    margin: 1rem;
+}
+/*Responsive*/
+
+.height-auto{
+    height: auto;
+}
+
+.padding5{
+    padding: 5px;
+}
+
+.padding0{
+    padding: 0px;
+}
+
+
+.dis{
+  display: inline-block;
+}
+.dis2{
+  display: inline-table;
+}
+.pago{
+  width: 5rem;
+  height: auto;
+}
+.margen{
+  margin-top: 1rem;
+}

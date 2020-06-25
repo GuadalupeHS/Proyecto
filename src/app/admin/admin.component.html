@@ -1,0 +1,96 @@
+  <div class ="marginRem">
+    <button class="mdc-button mdc-button--raised blanco texto-amarillo" data-toggle="dropdown">               
+      <i class="material-icons mdc-icon-button__icon">add</i>
+      <span class="mdc-button__ripple"></span> Agregar
+    </button>
+    <div class="dropdown-menu">
+        <div class="form-group">
+          <label for="nombre">Nombre del producto</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+        </div>
+        <div class="form-group">
+          <label for="descripcion">Descripción del producto</label>
+          <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+        </div>
+        <div class="form-group">
+          <label for="precio">Precio del producto</label>
+          <input type="number" class="form-control" id="precio" placeholder="$">
+        </div>
+        <div class="form-group">
+          <input
+            style="display: none"
+            type="file" (change)="onFileChanged($event)"
+            #fileInput>
+          <button (click)="fileInput.click()">Imagen</button>
+          <span *ngIf=selectedFile>{{selectedFile.name}}</span>
+          <button (click)="onUpload()">Upload!</button>
+        </div>
+        
+        <button class="btn btn-primary">Agregar</button>
+      </div>
+    
+
+
+    <label for="departamentos">Departamentos:</label>
+    <div id="departamentos" class=" p-2 dropdown inline-block">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button">Action</button>
+          <button class="dropdown-item" type="button">Another action</button>
+          <button class="dropdown-item" type="button">Something else here</button>
+        </div>
+      </div>
+
+      <div class="mdc-data-table block">
+        <table class="mdc-data-table__table" aria-label="Dessert calories">
+          <thead>
+            <tr class="mdc-data-table__header-row">
+              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Id</th>
+              <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric center" role="columnheader" scope="col">Imagen</th>
+              <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Nombre</th>
+              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Operaciones</th>
+            </tr>
+          </thead>
+          <tbody class="mdc-data-table__content" *ngFor="let producto of productos; index as i;">
+            <tr class="mdc-data-table__row">
+              <td class="mdc-data-table__cell">{{producto.id}}</td>
+              <td class="mdc-data-table__cell mdc-data-table__cell--image center">
+                <img class="imagenTabla" src="{{producto.imagenLink}}" alt="">
+              </td>
+              <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{producto.nombre}}</td>
+              <td class="mdc-data-table__cell">
+
+                <button class="mdc-button mdc-button--raised blanco texto-verde" data-toggle="dropdown"> 
+                    <i class="material-icons mdc-icon-button__icon">visibility</i>
+                    <span class="mdc-button__ripple"></span> Ver
+                </button>
+                <div class="dropdown-menu p-4" style="height: auto; max-width: 30rem;">
+                   
+                  <h5 class="modal-title" id="exampleModalLabel">{{producto.nombre}}</h5>
+                  <span class="mdc-typography mdc-typography--body2 price">${{producto.precio}}</span>
+                  <img class="imagenTabla" src="{{producto.imagenLink}}" alt="">
+                  
+                  <span class="texto">{{producto.descripcion}}</span>
+                    
+                </div>
+
+                <button class="mdc-button mdc-button--raised blanco texto-azul">               
+                    <i class="material-icons mdc-icon-button__icon">edit</i>
+                    <span class="mdc-button__ripple"></span> Editar
+                </button>
+
+                <button class="mdc-button mdc-button--raised blanco texto-rojo">               
+                    <i class="material-icons mdc-icon-button__icon">delete</i>
+                    <span class="mdc-button__ripple"></span> Eliminar
+                </button>
+
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        
+</div>
