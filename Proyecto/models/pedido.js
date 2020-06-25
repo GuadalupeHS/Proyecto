@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model("Pedido", new mongoose.Schema({
-    id: Number,
+    id: String,
     usuario: String,
     productos: Array,
     total: Number,
@@ -9,9 +9,9 @@ module.exports = mongoose.model("Pedido", new mongoose.Schema({
     calle: String,
     numero_exterior: Number,
     numero_interior:Number,
-    colonia: String
-    Codigo_postal: Number,
-    Municipio: String,
-    Estado: String,
-    Pais:String,
+    colonia: String,
+    codigo_postal: Number,
+    municipio: String,
+    estado: String,
+    pais:String,
 }), 'Pedido')

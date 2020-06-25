@@ -8,16 +8,20 @@ const VIEWSEC= {Perros: 'Perros', Gatos:'Gatos', Mamiferos:'Mamiferos', Aves:'Av
   templateUrl: './categorias.component.html',
   styleUrls: ['./categorias.component.css']
 })
-export class CategoriasComponent implements OnInit {
+export class CategoriasComponent {
 
-  constructor(private route: ActivatedRoute) { }
   mascota;
-
-  ngOnInit(): void {
-
-    this.mascota = this.route.snapshot.queryParams["mascota"];
+  departamento;
+  constructor(private route: ActivatedRoute, private router: Router) { 
+    
+    router.events.subscribe((val) => {
+      this.mascota = this.route.snapshot.queryParams["mascota"];
+      this.departamento = this.route.snapshot.queryParams["departamento"]
+     });
   }
+
   CurrentView;
   VIEWSEC = VIEWSEC;
+ 
 
 }

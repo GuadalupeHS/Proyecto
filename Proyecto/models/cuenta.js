@@ -4,13 +4,15 @@ module.exports =
 mongoose.model( 'Cuenta', new mongoose.Schema({
     usuario: String,
     nombre: String,
+    id: String,
     apellidoPaterno: String,
     apellidoMaterno: String,
+    password: String,
     pedidos: Array,
     carrito: Array,
     calle: String,
     numExterior: Number,
-    numInteriro: Number,
+    numInterior: Number,
     colonia: String,
     codigoPostal: Number,
     municipio: String,
@@ -22,5 +24,6 @@ mongoose.model( 'Cuenta', new mongoose.Schema({
     numTarjeta: Number,
     fechaExp: String,
     cvv: Number,
-    idProveedor:Number  //or null
+    idProveedor:Number,
+    verificado: Boolean  //or null
 }), 'Cuentas');
