@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { SuccessComponent } from './success/sucess.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
+
 
 
 
@@ -26,6 +28,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'checkout', component: CheckoutComponent},
   { path: 'perfil', component: PerfilComponent},
+  { path: 'pedido/success', component: PedidosComponent},
   { path: '*', redirectTo:'/main', pathMatch: 'full'},
   { path: '**', component: MainComponent}
 
@@ -39,4 +42,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [ CategoriasComponent, CatalogoComponent,AdminComponent, MainComponent, RegisterComponent, PerfilComponent]
+export const routingComponents = [ CategoriasComponent, CatalogoComponent,AdminComponent, MainComponent, RegisterComponent, PerfilComponent, PedidosComponent]

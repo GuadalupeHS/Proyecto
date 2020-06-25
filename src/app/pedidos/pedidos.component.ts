@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+ const VIEW ={Success: 'Success'}
 
 declare var $:any;
 
@@ -9,75 +11,217 @@ declare var $:any;
 })
 
 
-
-export class PedidosComponent implements OnInit {
-  ngOnInit(): void {
-  }
-
+export class PedidosComponent implements OnInit{
+    option;
+    constructor(private route: ActivatedRoute, private router: Router) { 
+      
+      router.events.subscribe((val) => {
+        this.option = this.route.snapshot.queryParams["option"];
+       
+       });
+    }
   
-  // pedido={
-  //   id:'',
-  //   usuario:'',
-  //   calle:'',
-  //   numero_exterior:'',
-  //   numero_interior:'',
-  //   colonia:'',
-  //   codigo_postal:'',
-  //   municipio:'',
-  //   estado:'',
-  //   pais:''
-  // }
-  cuentas = []; 
-
-  isLoadingCuentas = true;
-  usuario='';
-  SearchCuenta = function()
-  { 
-    var params ='?';
-    var numParams =0;
-    var self = this; 
-    if ( this.usuario != null)
-    {
-      params += ( numParams != 0 ? '&': '')+ 'usuario=' + this.usuario;
-      numParams++;
+    CurrentView;
+    VIEW=VIEW;
+    navCart = [];
+  
+    
+    
+    session = {
+      valid: false,
+      user: 'skdfjsd'
+    };
+    user={
+      "usuario":'',
+      "nombre":'',
+      "numTarjeta":'',
+      "fechaExp":'',
+      "cvv":'',
+      "calle":'',
+      "numExterior":'',
+      "numInterior":'',
+      "colonia":'',
+      "codigoPostal":'',
+      "municipio":'',
+      "estado":'',
+      "pais":'',
+      "idPedido":''
     }
     
-    $.ajax ({
-      method: 'get',
-      url: 'http://localhost:777/cuenta/search' + params,
-      success: function(result){
-        self.cuentas=result;
-        self.isLoadingCuentas=false;
-      // alert ('Ok');
-    },
-    error:function (xhr, ajaxOptions, thrownError){
-      self.cuentas=[];
-      self.isLoadingCuentas=false;
-    // alert('error');
+   
+    // ids=[];
+    // GetIdPedido=function(){
+    //   var params = '';
+    //   params += 'usuario=' + this.user.usuario;
+  
+    //   var self = this;
+    //   $.ajax ({
+    //     method: 'get',
+    //     url: 'http://localhost:777/pedido/user?' + params,
+    //     success: function(result){
+    //       self.ids=result;
+    //       // self.router.navigate(['/perfil'], {queryParams: {option:'DatosP'}});
+    //   },
+    //   error:function (xhr, ajaxOptions, thrownError){
+    //     self.ids=[];
+    //     self.isLoadingPedido=false;
+    //   }
+    //   });
+    // }
+    
+  
+    
+    GetCookies = function()
+    {
+      var cookies = document.cookie.split(';');
+      var array = {};
+      for( var i = 0; i < cookies.length; i++ )
+      {
+        var cookie = cookies[i].split('=');
+        array[cookie[0]] = cookie[1];
+      }
+      return array;
     }
-  });
+    ngOnInit(): void {
+      var cookies = this.GetCookies();
+      console.log(cookies);
+        if(!cookies['UserID']){
+          console.log("Nel");
+          return(null);
+        }
+  
+        var self = this;
+  
+        $.get({
+          url: 'http://localhost:777/cuenta/' + cookies['UserID'],
+          xhrFields: {
+            withCredentials: true
+          },
+          success: function (res) {
+            self.user=res;
+  
+          },
+          error: function (){
+            self.router.navigate(['/'], {});
+          }
+        });
+       
+      
+    }
+  
+    
+  }
+  
+  
+  
+  
 
-}
 
+
+
+
+
+
+// export class PedidosComponent implements OnInit{
+//   option;
+//   constructor(private route: ActivatedRoute, private router: Router) { 
+    
+//     router.events.subscribe((val) => {
+//       this.option = this.route.snapshot.queryParams["option"];
+     
+//      });
+//   }
+
+//   CurrentView;
+//   VIEW=VIEW;
+//   navCart = [];
 
   
-  // constructor() { }
   
-}
+//   session = {
+//     valid: false,
+//     user: 'skdfjsd'
+//   };
+//   user={
+//     "usuario":'',
+//     "nombre":'',
+//     "numTarjeta":'',
+//     "fechaExp":'',
+//     "cvv":'',
+//     "calle":'',
+//     "numExterior":'',
+//     "numInterior":'',
+//     "colonia":'',
+//     "codigoPostal":'',
+//     "municipio":'',
+//     "estado":'',
+//     "pais":'',
+//     "idPedido":''
+//   }
+  
+ 
+//   // ids=[];
+//   // GetIdPedido=function(){
+//   //   var params = '';
+//   //   params += 'usuario=' + this.user.usuario;
+
+//   //   var self = this;
+//   //   $.ajax ({
+//   //     method: 'get',
+//   //     url: 'http://localhost:777/pedido/user?' + params,
+//   //     success: function(result){
+//   //       self.ids=result;
+//   //       // self.router.navigate(['/perfil'], {queryParams: {option:'DatosP'}});
+//   //   },
+//   //   error:function (xhr, ajaxOptions, thrownError){
+//   //     self.ids=[];
+//   //     self.isLoadingPedido=false;
+//   //   }
+//   //   });
+//   // }
+  
+
+  
+//   GetCookies = function()
+//   {
+//     var cookies = document.cookie.split(';');
+//     var array = {};
+//     for( var i = 0; i < cookies.length; i++ )
+//     {
+//       var cookie = cookies[i].split('=');
+//       array[cookie[0]] = cookie[1];
+//     }
+//     return array;
+//   }
+//   ngOnInit(): void {
+//     var cookies = this.GetCookies();
+//     console.log(cookies);
+//       if(!cookies['UserID']){
+//         console.log("Nel");
+//         return(null);
+//       }
+
+//       var self = this;
+
+//       $.get({
+//         url: 'http://localhost:777/cuenta/' + cookies['UserID'],
+//         xhrFields: {
+//           withCredentials: true
+//         },
+//         success: function (res) {
+//           self.user=res;
+
+//         },
+//         error: function (){
+//           self.router.navigate(['/'], {});
+//         }
+//       });
+     
+    
+//   }
+
+  
+// }
 
 
 
-    // var params = '';
-    // params += 'usuario=' + this.cuenta.usuario+ '&';
-    // params += 'calle=' + this.cuenta.calle + '&';
-    // params += 'numero_exterior=' + this.cuenta.numero_exterior + '&';
-    // params += 'numero_interior=' + this.cuenta.numero_interior + '&';
-    // params += 'colonia=' + this.cuenta.colonia + '&';
-    // params += 'codigo_postal=' + this.cuenta.codigo_postal + '&';
-    // params += 'municipio=' + this.cuenta.municipio + '&';
-    // params += 'estado=' + this.cuenta.estado + '&';
-    // params += 'pais=' + this.cuenta.pais;
-    // var params = this.cuenta.usuario;
-
-    // var datos= this.cuenta.usuario +' '+ this.cuenta.calle + ' '+ this.cuenta.numero_interior + ' '+ this.cuenta.colonia;
-    // console.log(datos);
