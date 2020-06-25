@@ -16,10 +16,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { SuccessComponent } from './success/sucess.component';
-import { PedidosComponent } from './pedidos/pedidos.component';
 import { EditInfoComponent } from './editinfo/editinfo.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -38,10 +38,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MainComponent,
     LoginComponent,
     SuccessComponent,
-    PedidosComponent,
     EditInfoComponent,
     CheckoutComponent,
-    PerfilComponent
+    PerfilComponent,
+    PedidosComponent
   ],
   imports: [
     BrowserModule,

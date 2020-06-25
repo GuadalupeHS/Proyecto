@@ -8,13 +8,13 @@ router.get('/search',async (req, res) =>{
     var parameters = req.query;
     var required = req.params;
     // res.send({texto:'localhost/search'});
-    if( parameters.id || parameters.usuario || parameters.estatus )
+    if( parameters.idPedido || parameters.usuario || parameters.estatus )
         {
             var filter ={};
             var max =parameters.max ?  parseInt(parameters.max): null; 
-            if(parameters.id)
+            if(parameters.idPedido)
             {
-                filter.id = { $regex: Utils.ToRegex( parameters.id )};
+                filter.idPedido = { $regex: Utils.ToRegex( parameters.idPedido )};
             }
             if(parameters.usuario)
             {
@@ -50,49 +50,61 @@ router.get('/search',async (req, res) =>{
 //     res.send(encontrados);
 //     res.end();
 // }); 
-router.get('/:id', async (req, res)=>{
-    var required = req.params;
+router.get('/user', async (req, res)=>{
+    var required = req.query;
     var filter = {};
-    filter.id = required.id;
+    console.log('este es req.params');
+    console.log(req);
+    filter.usuario = required.usuario;
+    console.log('estes es el usuario de pedido');
+    console.log(filter.usuario);
     var encontrados = await Pedido.findOne(filter);
     res.send(encontrados);
+    console.log(encontrados)
     res.end();
 });
 
-router.post('/:usuario', async (req, res)=>{
-    var required = req.params;
+router.post('/order', async (req, res)=>{
+    var required = req.query;
     var filter = {};
     filter.usuario =required.usuario;
+    //console.log('estes es el req.query');
+    // console.log(req.query);
     
     // var generateSafeId = require('generate-safe-id');
-
+    //console.log('este es el usuario:');
+    //console.log(filter.usuario);
  
     var encontrados = await Pedido.findOne(filter);
     if( encontrados)
     {
-        res.send( {error:'Este pedido ya existe con el usuario: ' + required.usuario + ' y con el id ' + encontrados.id});
+        res.send( {error:'Este pedido ya existe con el usuario: ' + required.usuario + ' y con el id ' + encontrados.idPedido});
         return;
     } 
-    var pedido = req.body;
+    var pedido = req.query;
     // var ID = generateSafeId();
     var shortid = require('shortid');
     ID= shortid.generate();
-    pedido.id= ID;
+    //console.log('este es pedido:');
+    //console.log(pedido);
+    pedido.idPedido= ID;
     pedido.usuario = filter.usuario;
-    if( !pedido.productos || !pedido.total || !pedido.estatus )
+   // console.log('este es pedido.usuario');
+    //console.log(pedido.usuario);
+    if( !pedido.usuario || !pedido.calle || !pedido.pais )
     {
         res.send("Debes cumplir con las características minimas de un pedido");
         return;
     }
-    // var insertado = await Productos.insertOne(producto);
-    var insertado = await Pedido.bulkWrite([{
-        insertOne:{document :{id:req.body.id, usuario: req.body.usuario, productos: req.body.productos, total:req.body.total, estatus:req.body.estatus,
-             calle:req.body.calle, numero_exterior:req.body.numero_exterior, numero_interior: req.body.numero_interior, colonia:req.body.colonia,
-            codigo_postal:req.body.codigo_postal, municipio:req.body.municipio, estado:req.body.estado, pais:req.body.pais}}
+    var insertado = await Pedido.create(pedido);
+    // var insertado = await Pedido.bulkWrite([{
+    //     insertOne:{document :{idPedido:req.body.idPedido, usuario: req.body.usuario, productos: req.body.productos, total:req.body.total, estatus:req.body.estatus,
+    //          calle:req.body.calle, numero_exterior:req.body.numero_exterior, numero_interior: req.body.numero_interior, colonia:req.body.colonia,
+    //         codigo_postal:req.body.codigo_postal, municipio:req.body.municipio, estado:req.body.estado, pais:req.body.pais}}
 
-    }]);
+    // }]);
  
-    if( insertado)
+    if( !insertado)
     {
         res.send("se inserto correctamente ")
     }
@@ -106,7 +118,7 @@ router.post('/:usuario', async (req, res)=>{
 router.put('/:id', async (req, res)=>{
     var required = req.params;
     var filter = {};
-    filter.id =required.id;
+    filter.idPedido =required.idPedido;
     var encontrados = await Pedido.findOne(filter);
     if( !encontrados)
     {
@@ -114,7 +126,7 @@ router.put('/:id', async (req, res)=>{
         return;
     }
     var pedido = req.body;
-   pedido.id = filter.id;
+   pedido.idPedido = filter.idPedido;
     var insertado = await Pedido.updateOne(filter, {$set: pedido});
     if( insertado)
     {
@@ -130,7 +142,7 @@ router.put('/:id', async (req, res)=>{
 router.delete('/:id', async (req, res)=>{
     var required = req.params;
     var filter = {};
-    filter.id =required.id;
+    filter.idPedido =required.idPedido;
     var encontrados = await Pedido.findOne(filter);
     if( !encontrados)
     {

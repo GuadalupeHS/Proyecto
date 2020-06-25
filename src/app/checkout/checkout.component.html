@@ -1,44 +1,255 @@
 <main class="container" >
-    <div class="container">
-        <div class="row" style="margin-top: 2rem;">
-           
-            <div class="col-lg-6 text-center">
-                <h1 class="design1"> Revisa tu pedido </h1>
-
-                <div *ngIf="navCart.length == 0;"><p>Agregar contenido a tu carrito</p></div>
-
-
-                <div *ngFor="let producto of navCart; index as index;">
-
-              
-                    <div class="tarjeta300 float">
-                      <img src="{{producto.imagenLink}}" alt="" class="img-fluid img-thumbnail foto">
-                      <span>{{producto.nombre}}</span>
-                      <span class="price">${{producto.precio}}</span>
-
-                      <div class="area-boton w100">
+      <div class="container">
+          <div class="row" style="margin-top: 2rem;">
+             
+              <div class="col-lg-6 text-center">
+                  <h1 class="design1">Mi Carrito de compras  ({{navCart.length}})</h1>
+  
+                  <div *ngIf="navCart.length == 0;"><p>Agregar contenido a tu carrito</p></div>
+  
+  
+                  <div *ngFor="let producto of navCart; index as index;">
+  
+                
+                      <div class="tarjeta300 float">
+                        <img src="{{producto.imagenLink}}" alt="" class="img-fluid img-thumbnail foto">
+                        <span>{{producto.nombre}}</span>
+                        <span class="price">${{producto.precio}}</span>
+  
+                        <div class="area-boton w100">
+                          
+                          <button class="mdc-button mdc-button--raised blanco texto-rojo w100" (click) = "deleteNavCart(producto.index);">               
+                            <i class="material-icons mdc-icon-button__icon">delete</i>
+                            <span class="mdc-button__ripple"></span> Eliminar
+                          </button>
+                        </div>
                         
-                        <button class="mdc-button mdc-button--raised blanco texto-rojo w100" (click) = "deleteNavCart(producto.index);">               
-                          <i class="material-icons mdc-icon-button__icon">delete</i>
-                          <span class="mdc-button__ripple"></span> Eliminar
-                        </button>
                       </div>
-                      
-                    </div>
-                      
+                        
+                  </div>
+      
+                  
+      
+              </div>
+  
+              <div class="col-lg-6 design2 text-center">
+                <button type="button" class="btn btn-info margen"  routerLink="/catalogo">Continuar Comprando</button>
+                   <h2> Total </h2>
+                  <p>Total a pagar:<span>${{total}}</span></p>
+                  <button  type="submit" class="btn btn-info" routerLink='/pedido/success' [queryParams]="{option:'Success'}"  (click)="AddPedido();" >Hacer pedido</button>
+                  
+              </div>
+              <button type="button" class="btn btn-info margen" routerLink="/checkout" [queryParams]="{option:'Pagar'}"> Formas de pago</button>
+              <div [hidden]="option!==VIEW.Pagar">
+                <div class="form-row margen">
+                  <div class="form-group col-lg-6">
+                    <h3>Tarjetas de credito</h3>
+                  </div>
+                  <div class="form-group col-lg-6" >
+                    <h3>Tarjetas de débito</h3>
+                  </div>
                 </div>
-    
-                <!-- ALERTAS -->
-    
-            </div>
+                <div class="form-row">
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/visa.png" alt="" class="pago"></div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/mastercard.png" alt="" class="pago"></div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/americanexpress.png" alt="" class="pago"></div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/BBVA.png" alt="" class="pago"></div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/santander.png" alt="" class="pago"></div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/HSBC.png" alt="" class="pago"></div>
+                  </div>
+                </div>
+                <div class="form-row"> 
+                  <div class="form-group col-lg-6">
+                      <label for="inputNombre">Nombre del titular</label>
+                      <input type="text" name="nombre" [(ngModel)] = "user.nombre" class="form-control" id="inputNombre" >
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <label for="inputNumTarjeta">Número de tarjeta</label>
+                    <input type="number" name="numTarjeta" [(ngModel)] = "user.numTarjeta" class="form-control" id="inputNumTarjeta" >
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-lg-6">
+                    <label for="inputFechaExp">Fecha de expiración</label>
+                    <input type="text" name="fechaExp" [(ngModel)] = "user.fechaExp" class="form-control" id="inputFechaExp" placeholder="Mes/Año"  >
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <label for="inputCodigoS">Código de seguridad</label>
+                    <input type="number" name="cvv" [(ngModel)] = "user.cvv" class="form-control" id="inputCodigoS" placeholder="3 dígitos" >
+                  </div>
+                </div>
+  
+                <button  type="submit" class="btn btn-info"  (click)="AddInfo();" >Guardar</button>
+  
+  
+              </div>
+          
+  
+  
+          </div>
+      </div>
+      </main>
 
-            <div class="col-lg-6 design2 text-center">
-                <h2> Total </h2>
-    
-                <p>Total a pagar:<span>${{total}}</span></p>
-                <!-- ALERTAS -->
-    
-            </div>
-        </div>
+
+    <!-- <main class="container" >
+      <div class="container">
+          <div class="row" style="margin-top: 2rem;">
+             
+              <div class="col-lg-6 text-center">
+                  <h1 class="design1">Mi Carrito de compras  ({{navCart.length}})</h1>
+  
+                  <div *ngIf="navCart.length == 0;"><p>Agregar contenido a tu carrito</p></div>
+  
+  
+                  <div *ngFor="let producto of navCart; index as index;">
+  
+                
+                      <div class="tarjeta300 float">
+                        <img src="{{producto.imagenLink}}" alt="" class="img-fluid img-thumbnail foto">
+                        <span>{{producto.nombre}}</span>
+                        <span class="price">${{producto.precio}}</span>
+  
+                        <div class="area-boton w100">
+                          
+                          <button class="mdc-button mdc-button--raised blanco texto-rojo w100" (click) = "deleteNavCart(producto.index);">               
+                            <i class="material-icons mdc-icon-button__icon">delete</i>
+                            <span class="mdc-button__ripple"></span> Eliminar
+                          </button>
+                        </div>
+                        
+                      </div>
+                        
+                  </div>
+      
+                  
+      
+              </div>
+  
+              <div class="col-lg-6 design2 text-center">
+                <button type="button" class="btn btn-primary"  routerLink="/catalogo">Continuar Comprando</button>
+                   <h2> Total </h2>
+                  <p>Total a pagar:<span>${{total}}</span></p>
+                  <button  type="submit" class="btn btn-primary" routerLink='/pedido/success' [queryParams]="{option:'Success'}"  (click)="AddPedido();" >Hacer pedido</button>
+                  
+              </div>
+              <button type="button" class="btn btn-info" routerLink="/checkout" [queryParams]="{option:'Pagar'}"> Formas de pago</button>
+              <div [hidden]="option!==VIEW.Pagar">
+                <div class="form-row">
+                  <div class="form-group col-lg-6">
+                    <h3>Tarjetas de credito</h3>
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <h3>Tarjetas de débito</h3>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/visa.png" alt="" class="pago"></div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/mastercard.png" alt="" class="pago"></div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/americanexpress.png" alt="" class="pago"></div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/BBVA.png" alt="" class="pago"></div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/santander.png" alt="" class="pago"></div>
+                  </div>
+                  <div class="col-lg-2">
+                    <div ><img src="../../assets/images/pago/HSBC.png" alt="" class="pago"></div>
+                  </div>
+                </div>
+                <div class="form-row"> 
+                  <div class="form-group col-lg-6">
+                      <label for="inputNombre">Nombre del titular</label>
+                      <input type="text" name="nombre" [(ngModel)] = "user.nombre" class="form-control" id="inputNombre" >
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <label for="inputNumTarjeta">Número de tarjeta</label>
+                    <input type="number" name="numTarjeta" [(ngModel)] = "user.numTarjeta" class="form-control" id="inputNumTarjeta" >
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-lg-6">
+                    <label for="inputFechaExp">Fecha de expiración</label>
+                    <input type="text" name="fechaExp" [(ngModel)] = "user.fechaExp" class="form-control" id="inputFechaExp" placeholder="Mes/Año"  >
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <label for="inputCodigoS">Código de seguridad</label>
+                    <input type="number" name="cvv" [(ngModel)] = "user.cvv" class="form-control" id="inputCodigoS" placeholder="3 dígitos" >
+                  </div>
+                </div>
+  
+                <button  type="submit" class="btn btn-primary"  (click)="AddInfo();" >Guardar</button>
+  
+  
+              </div>
+          
+  
+  
+          </div>
+      </div>
+      </main> -->
+  
+    <!-- <div class="row">
+      <div class="col-lg-6">
+        <h3>Tarjetas de credito</h3>
+      </div>
+      <div class="col-lg-6">
+        <h3>Tarjetas de débito</h3>
+      </div>
     </div>
-    </main>
+    <div class="row">
+      <div class="col-lg-2">
+        <div ><img src="../../assets/images/pago/visa.png" alt="" class="pago"></div>
+      </div>
+      <div class="col-lg-2">
+        <div ><img src="../../assets/images/pago/mastercard.png" alt="" class="pago"></div>
+      </div>
+      <div class="col-lg-2">
+        <div ><img src="../../assets/images/pago/americanexpress.png" alt="" class="pago"></div>
+      </div>
+      <div class="col-lg-2">
+        <div ><img src="../../assets/images/pago/BBVA.png" alt="" class="pago"></div>
+      </div>
+      <div class="col-lg-2">
+        <div ><img src="../../assets/images/pago/santander.png" alt="" class="pago"></div>
+      </div>
+      <div class="col-lg-2">
+        <div ><img src="../../assets/images/pago/HSBC.png" alt="" class="pago"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+          <label for="inputNombre">Nombre del titular</label>
+          <input type="text" name="nombre" [(ngModel)] = "user.nombre" class="form-control" id="inputNombre" >
+      </div>
+      <div class="col-lg-6">
+        <label for="inputNumTarjeta">Número de tarjeta</label>
+        <input type="number" name="numTarjeta" [(ngModel)] = "user.numTarjeta" class="form-control" id="inputNumTarjeta" >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <label for="inputFechaExp">Fecha de expiración</label>
+        <input type="number" name="fechaExp" [(ngModel)] = "user.fechaExp" class="form-control" id="inputFechaExp" placeholder="Mes/Año" >
+      </div>
+      <div class="col-lg-6">
+        <label for="inputCodigoS">Código de seguridad</label>
+        <input type="number" name="cvv" [(ngModel)] = "user.cvv" class="form-control" id="inputCodigoS" placeholder="3 dígitos" >
+      </div>
+    </div> -->

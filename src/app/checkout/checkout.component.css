@@ -24,7 +24,7 @@ html, body {
     width: auto;
     height: auto;
     max-width: 100%;
-    background-color: wheat;
+    background-color: rgb(134, 226, 233);
     margin: 0.3rem;
   }
   
@@ -71,16 +71,17 @@ html, body {
   .design1{
     width: auto;
     height: auto;
-    background-color: rgb(9, 237, 253);
+    background-color: rgb(41, 203, 243);
     border-radius: .2rem;
   }
   .design2{
     width: auto;
-    height: 5rem;
-    background-color: rgb(98, 216, 108);
+    height: 15rem;
+    background-color: #97ebee;
     border-radius: .2rem;
 
   }
+  
 
 
 
@@ -222,3 +223,16 @@ html, body {
 }
 
 
+.dis{
+  display: inline-block;
+}
+.dis2{
+  display: inline-table;
+}
+.pago{
+  width: 5rem;
+  height: auto;
+}
+.margen{
+  margin-top: 1rem;
+}
